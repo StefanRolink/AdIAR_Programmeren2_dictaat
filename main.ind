@@ -1,11 +1,68 @@
 \begin{theindex}
 
+  \item Classes, \hyperpage{39}
+  \item CSV files, \hyperpage{43}
+
+  \indexspace
+
+  \item Data Types, \hyperpage{25}
+  \item Draaien van scripts, \hyperpage{24}
+
+  \indexspace
+
+  \item Edit Excel sheets, \hyperpage{44}
+  \item Editor, \hyperpage{25}, \hyperpage{30}
+  \item Eindopdracht, \hyperpage{52}
   \item Ethernet Shield, \hyperpage{7}
 
   \indexspace
 
-  \item Installatie, \hyperpage{11}, \hyperpage{13}, \hyperpage{15}, 
-		\hyperpage{19}, \hyperpage{21}, \hyperpage{23}, 
-		\hyperpage{25}
+  \item Functies, \hyperpage{37}
+
+  \indexspace
+
+  \item GPIO, \hyperpage{31}
+
+  \indexspace
+
+  \item If/Else statements, \hyperpage{26}
+  \item Inleiding, \hyperpage{11}
+  \item Input/Output, \hyperpage{26}
+  \item Installatie, \hyperpage{23}
+  \item Interpreter, \hyperpage{24}
+  \item Introductie linux terminal, \hyperpage{29}
+
+  \indexspace
+
+  \item Lijsten, \hyperpage{35}
+  \item Loops, \hyperpage{32}
+
+  \indexspace
+
+  \item MQTT, \hyperpage{52}
+
+  \indexspace
+
+  \item Opdracht2, \hyperpage{17}
+  \item Opdrachten, \hyperpage{27}, \hyperpage{32}, \hyperpage{37}, 
+		\hyperpage{41}, \hyperpage{45}, \hyperpage{48}
+  \item Opgaves week 1, \hyperpage{14}
+
+  \indexspace
+
+  \item Packages, \hyperpage{40}
+  \item Pi header, \hyperpage{31}
+  \item pip, \hyperpage{41}
+  \item Plotten, \hyperpage{45}
+  \item Protocollen, \hyperpage{51}
+  \item pyGame, \hyperpage{48}
+
+  \indexspace
+
+  \item Tuples, \hyperpage{36}
+
+  \indexspace
+
+  \item wxPython, \hyperpage{47}
 
 \end{theindex}
