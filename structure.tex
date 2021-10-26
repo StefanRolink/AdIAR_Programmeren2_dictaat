@@ -34,7 +34,7 @@
 \usepackage{booktabs} % Required for nicer horizontal rules in tables
 
 \usepackage{xcolor} % Required for specifying colors by name
-\definecolor{ocre}{RGB}{243,102,25} % Define the orange color used for highlighting throughout the book
+\definecolor{ocre}{RGB}{38, 100, 168} % Define the bluecolor used for highlighting throughout the book
 
 %----------------------------------------------------------------------------------------
 %	MARGINS
@@ -70,7 +70,7 @@
 %	BIBLIOGRAPHY AND INDEX
 %----------------------------------------------------------------------------------------
 
-\usepackage[style=numeric,citestyle=numeric,sorting=nyt,sortcites=true,autopunct=true,babel=hyphen,hyperref=true,abbreviate=false,backref=true,backend=biber]{biblatex}
+\usepackage[style=numeric,citestyle=numeric,sorting=nyt,sortcites=true,autopunct=true,hyperref=true,abbreviate=false,backref=true,backend=biber]{biblatex}
 \addbibresource{bibliography.bib} % BibTeX bibliography file
 \defbibheading{bibempty}{}
 
@@ -205,7 +205,7 @@
 \newcommand{\ud}{\mathop{\mathrm{{}d}}\mathopen{}}
 \newcommand{\intff}[2]{\mathopen{[}#1\,;#2\mathclose{]}}
 \renewcommand{\qedsymbol}{$\blacksquare$}
-\newtheorem{notation}{Notation}[chapter]
+\newtheorem{notation}{Notitie}[chapter]
 
 % Boxed/framed environments
 \newtheoremstyle{ocrenumbox}% Theorem style name
@@ -258,17 +258,17 @@
 \newcounter{dummy} 
 \numberwithin{dummy}{section}
 \theoremstyle{ocrenumbox}
-\newtheorem{theoremeT}[dummy]{Theorem}
-\newtheorem{problem}{Problem}[chapter]
-\newtheorem{exerciseT}{Exercise}[chapter]
+\newtheorem{theoremeT}[dummy]{Theorema}
+\newtheorem{problem}{Probleem}[chapter]
+\newtheorem{exerciseT}{Opdracht}[chapter]
 \theoremstyle{blacknumex}
-\newtheorem{exampleT}{Example}[chapter]
+\newtheorem{exampleT}{Voorbeeld}[chapter]
 \theoremstyle{blacknumbox}
-\newtheorem{vocabulary}{Vocabulary}[chapter]
-\newtheorem{definitionT}{Definition}[section]
+\newtheorem{vocabulary}{Vocabulair}[chapter]
+\newtheorem{definitionT}{Definitie}[section]
 \newtheorem{corollaryT}[dummy]{Corollary}
 \theoremstyle{ocrenum}
-\newtheorem{proposition}[dummy]{Proposition}
+\newtheorem{proposition}[dummy]{Propositie}
 
 %----------------------------------------------------------------------------------------
 %	DEFINITION OF COLORED BOXES
@@ -354,7 +354,7 @@ innerbottommargin=5pt]{cBox}
 \leftmargin=35pt % Indentation on the left
 \rightmargin=25pt}\item\ignorespaces % Indentation on the right
 \makebox[-2.5pt]{\begin{tikzpicture}[overlay]
-\node[draw=ocre!60,line width=1pt,circle,fill=ocre!25,font=\sffamily\bfseries,inner sep=2pt,outer sep=0pt] at (-15pt,0pt){\textcolor{ocre}{R}};\end{tikzpicture}} % Orange R in a circle
+\node[draw=ocre!60,line width=1pt,circle,fill=ocre!25,font=\sffamily\bfseries,inner sep=2pt,outer sep=0pt] at (-15pt,0pt){\textcolor{ocre}{N.B.}};\end{tikzpicture}} % Orange R in a circle
 \advance\baselineskip -1pt}{\end{list}\vskip5pt} % Tighter line spacing and white space after remark
 
 %----------------------------------------------------------------------------------------
