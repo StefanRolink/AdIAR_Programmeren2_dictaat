@@ -76,7 +76,7 @@ Pas je programma zodanig aan dat je via een zogeheten 'GET-variabele' (als onder
 naar bijv: \newline
 \url{http://192.168.1.3/?p8=1} \newline
 Waarmee de LED aan pin 8 aan wordt aangezet. Overeenkomstig kan met \newline
-\url{http://192.168.1.3/?p9=0}
+\url{http://192.168.1.3/?p9=0} \newline
 de LED aan pin 9 worden uitgezet (terwijl die aan pin 8 natuurlijk aan blijft). \newline \par
 Zoek onderin je code naar de functie $parseHeader()$, hier moet de URL van hierboven worden verwerkt ($geparsed$). 
 
@@ -132,14 +132,14 @@ Pas deze gegevens aan aan je eigen (thuis)situatie.
 EthernetClient client;
 \end{lstlisting}
 
-De variabele client, via welke het verdere interface verloopt is van het type EthernetClient. Deze is bekend, en daardoor oranje in de code, via het include statement, bovenin het programma.
+De variabele $client$, via welke het verdere interface verloopt is van het type $EthernetClient$. Deze is bekend, en daardoor oranje in de code, via het include statement, bovenin het programma.
 
 \begin{lstlisting}[language=Arduino, numbers=none]
 Ethernet.begin(mac, ip, myDns);
 \end{lstlisting}
 
 \begin{remark}
-\textit{Let op}: Ethernet is feitelijk de abstractie van de shield. Via dit object hebben we toegang tot de shield. Uiteraard heeft dit object methoden, zoals begin(), waarmee de shield wordt geïnitialiseerd. begin() heeft meerdere verschijningsvormen of interfaces. Eén met alleen een mac-adres of één met een mac-adres en een IP-adres. De hier gekozen variant gaat uit van een DNS-adres zodat de server via een URL kan worden benaderd. Voor meer informatie, zie bij: \newline
+\textit{Let op}: $Ethernet$ is feitelijk de abstractie van de shield. Via dit object hebben we toegang tot de shield. Uiteraard heeft dit object methoden, zoals $begin()$, waarmee de shield wordt geïnitialiseerd. $begin()$ heeft meerdere verschijningsvormen of interfaces. Eén met alleen een mac-adres of één met een mac-adres en een IP-adres. De hier gekozen variant gaat uit van een DNS-adres zodat de server via een URL kan worden benaderd. Voor meer informatie, zie bij: \newline
 \url{https://www.arduino.cc/en/Reference/EthernetBegin}
 \end{remark}
 
@@ -147,6 +147,16 @@ Eenmaal (goed) geïnitialiseerd kan het lokale IP-adres worden afgedrukt met:
 
 \begin{lstlisting}[language=Arduino, numbers=none]
 Serial.println(Ethernet.localIP());
+\end{lstlisting}
+
+Daarna wordt er gepoogd een verbinding met een externe server te maken, met:
+\begin{lstlisting}[language=Arduino, numbers=none]
+if (client.connect(server, 80))
+\end{lstlisting}
+Merk op dat connect een methode is van het client object, dat server een argument is dat hieraan meegegeven wordt en dat server , i.v.m. de DNS-optie, hier een URL is. Dat is hier een (statische) string. Zie bovenin het programma. Je kunt, via out-commenting, ook kiezen voor een ‘hard’ IP-adres, als de DNS-optie niet werkt. \par
+Eenmaal verbonden met de server, kun je het IP-adres, nu van de server, opvragen en printen met 
+\begin{lstlisting}[language=Arduino, numbers=none]
+Serial.println(client.remoteIP());
 \end{lstlisting}
 
 Daarna voert het programma zijn taak uit. Dat begint met:
