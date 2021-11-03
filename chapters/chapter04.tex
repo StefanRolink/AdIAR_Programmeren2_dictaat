@@ -195,11 +195,16 @@ Vooral bij langere wat langere strings, kan dit de leesbaarheid van je code bevo
 
 \section{Huiswerkopdrachten}\index{Huiswerkopdrachten}
 \begin{exercise} \label{exc:exc1}
-Maak een programma die de gebruiker om zijn naam vraagt. Groet hierna de gebruiker in de vorm van \textit{"Hallo, <naam>!"}.
+Maak een programma dat de gebruiker om zijn naam vraagt. Groet hierna de gebruiker in de vorm van \textit{"Hallo, <naam>!"}.
 \end{exercise}
 
 \begin{exercise}
-Schrijf een programma die de gebruiker vraagt om de straal ($r$) van een cirkel in te typen. Geef daarna de omtrek (= $2*r*\pi$) en de oppervlakte (= $r^2*\pi$) op basis van de straal. \newline \newline
+Breidt het programma van opdracht \ref{exc:exc1} uit, zodat het programma je schreeuwend begroet: \textit{"HALLO, <NAAM>!"}. \newline
+\textbf{Tip:} om een string naar hoofdletters om te zetten, gebruik \pyth{naam.upper()}-functie.
+\end{exercise}
+
+\begin{exercise}
+Schrijf een programma dat de gebruiker vraagt om de straal ($r$) van een cirkel in te typen. Geef daarna de omtrek (= $2*r*\pi$) en de oppervlakte (= $r^2*\pi$) op basis van de straal. \newline \newline
 \textbf{Tip 1:} Alles wat de gebruiker intypt, en je afvangt met \pyth{input()} is van het type string. Om van een string met cijfers, een daadwerkelijk getal te maken, gebruik je de functie \pyth{int()}. Bijv. \pyth{x = int('123')}.\newline \newline
 \textbf{Tip 2:} Zet bovenin je programma \pyth{import math}, je hebt daarna toegang tot allerlei wiskundige functies. Zo ook \pyth{math.pi} en \pyth{math.pow()}.
 \end{exercise}
@@ -208,13 +213,10 @@ Schrijf een programma die de gebruiker vraagt om de straal ($r$) van een cirkel 
 \textbf{Tip:} Als je niet zeker van jezelf bent wat voor type een variabele krijgt, kun je ook hier handig gebruik maken van de interpreter en de functie \pyth{type()}:
 \begin{python}
 >>> a = 'een string'
->>> b = 1.2
->>> c = 4
+>>> b = 4
 >>> type(a)
 <class 'str'>
 >>> type(b)
-<class 'float'>
->>> type(c)
 <class 'int'>
 \end{python}
 \end{remark}
@@ -222,18 +224,18 @@ Schrijf een programma die de gebruiker vraagt om de straal ($r$) van een cirkel 
 \begin{exercise}
 Breidt het programma van opdracht \ref{exc:exc1} uit, zodat het programma de gebruiker vraagt om achtereenvolgens z'n voornaam, achternaam, geslacht en leeftijd. \newline
 Groet hierna de gebruiker in de vorm \textit{"Hallo, <voornaam>!"}. \newline
-Is de persoon in questie echter ouder dan 50, gebruik dan een formelere begroeting op basis van zijn of haar geslacht: \textit{"Gegroet, Mr. <achternaam>!"} of \textit{"Gegroet, Mevr. <achternaam>!"}
+Is de persoon in kwestie echter ouder dan $50$, gebruik dan een formelere begroeting op basis van zijn of haar geslacht: \textit{"Gegroet, Mr. <achternaam>!"} of \textit{"Gegroet, Mevr. <achternaam>!"}
 \end{exercise}
 
 \begin{exercise}
-Maak een programma die de gebruiker vraagt om een getal, geef daarna aan of dat getal even of oneven is.
+Maak een programma dat de gebruiker vraagt om een getal, geef daarna aan of dat getal even of oneven is.
 \end{exercise}
 
 \begin{exercise}
-Schrijf een programma die de gebruiker vraagt om 2 getallen in te voeren, print daarna de grootste van de twee op het scherm. 
+Schrijf een programma dat de gebruiker vraagt om 2 getallen in te voeren, print daarna de grootste van de twee op het scherm. 
 \end{exercise}
 
 \begin{exercise}
-Schrijf een programma die de gebruiker vraagt om een getal. Dit getal correspondeert met een dag in de week ($1$ = maandag, $2$ = dinsdag, etc.). print de correspondeerde dag op het scherm. Als de gebruiker een getal groter dan $7$ of kleiner dan $1$ invoerd, geef dan een 'error'.
+Schrijf een programma dat de gebruiker vraagt om een getal. Dit getal correspondeert met een dag in de week ($1$ = maandag, $2$ = dinsdag, etc.). print de correspondeerde dag op het scherm. Als de gebruiker een getal groter dan $7$ of kleiner dan $1$ invoert, geef dan een 'error'.
 \end{exercise}
 
