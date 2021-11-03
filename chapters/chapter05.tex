@@ -14,7 +14,22 @@
 \lipsum[1-3] % Dummy text
 
 \section{Loops}\index{Loops}
-\lipsum[1-3] % Dummy text
+Als we bepaalde onderdelen van onze code vaker uit willen voeren, kunnen we dat doen aan de hand van \textit{loops}. In \textit{C} hadden we al kennisgemaakt met de \pyth{for}-loop. Deze zit gelukkig ook in \textit{Python}, maar werkt wel een beetje anders. We gebruiken deze vaak in combinatie met de funtie \pyth{range()}:
+\begin{python}
+for x in range(0, 10, 1):
+	print(x)
+\end{python}
+In het bovenstaande voorbeeld roepen we de functie \pyth{range()} aan met 3 argumenten. De eerste geeft het startgetal voor $x$ aan, de tweede bij welke waarde van $x$ de loop moet stoppen, en de derde en laatste met welke hoeveel we $x$ we moeten verhogen bij elke nieuwe iteratie. Dit voorbeeld print dus de getallen $0$ t/m $9$ op het scherm. 
+
+\begin{remark}
+De functie \pyth{range()} kun je op $3$ verschillende manieren aanroepen:
+\begin{enumerate}
+\item[-] \pyth{range(stop)}: Met enkel $1$ argument, de stop waarde. $start=0, step=1$.
+\item[-] \pyth{range(start, stop)}: Met $2$ argumenten, voor start en stop. $step=1$.
+\item[-] \pyth{range(start, stop, stap)}: En $3$, zoals in het voorbeeld.
+\end{enumerate}
+In het bovenstaande stukje voorbeeldcode kan dus \pyth{range(0, 10, 1)} worden vervangen door \pyth{range(10)}, want die levert dezelfde functionaliteit.
+\end{remark}
 
 \section{Opdrachten}\index{Opdrachten}
 \begin{exercise}
