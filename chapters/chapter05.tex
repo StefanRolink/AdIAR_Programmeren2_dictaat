@@ -1,17 +1,12 @@
 \chapter{Python op de Pi}
-\lipsum[1-3] % Dummy text
 
 \section{Introductie linux terminal}\index{Introductie linux terminal}
-\lipsum[1-3] % Dummy text
 
 \section{Editor}\index{Editor}
-\lipsum[1-3] % Dummy text
 
 \section{Pi header}\index{Pi header}
-\lipsum[1-3] % Dummy text
 
 \section{GPIO}\index{GPIO}
-\lipsum[1-3] % Dummy text
 
 \section{Loops}\index{Loops}
 Als we bepaalde onderdelen van onze code vaker uit willen voeren, kunnen we dat doen aan de hand van \textit{loops}. In \textit{C} hadden we al kennisgemaakt met de \pyth{for}-loop. Deze zit gelukkig ook in \textit{Python}, maar werkt wel een beetje anders. We gebruiken deze vaak in combinatie met de funtie \pyth{range()}:
@@ -31,7 +26,15 @@ De functie \pyth{range()} kun je op $3$ verschillende manieren aanroepen:
 In het bovenstaande stukje voorbeeldcode kan dus \pyth{range(0, 10, 1)} worden vervangen door \pyth{range(10)}, want die levert dezelfde functionaliteit.
 \end{remark}
 
-\section{Opdrachten}\index{Opdrachten}
+Als tweede voorbeeld een loop die van $2$ t/m $25$ loopt, met stapjes van $3$:
+\begin{python}
+for x in range(2, 25, 3):
+	print(x)
+\end{python}
+Dit print het volgende uit: $2, 5, 8, 11, 14, 17, 20, 23$. De \pyth{for}-loop stopt na $23$, omdat $23+3 = 26$, wat hoger is dan $25$, de stop waarde.
+
+
+\section{Huiswerkopdrachten}\index{Huiswerkopdrachten}
 \begin{exercise}
 $\\$
 \end{exercise}

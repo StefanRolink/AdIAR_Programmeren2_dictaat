@@ -1,7 +1,7 @@
 \begin{theindex}
 
-  \item Classes, \hyperpage{33}
-  \item CSV files, \hyperpage{37}
+  \item Classes, \hyperpage{29}
+  \item CSV files, \hyperpage{33}
 
   \indexspace
 
@@ -9,22 +9,22 @@
 
   \indexspace
 
-  \item Edit Excel sheets, \hyperpage{38}
-  \item Editor, \hyperpage{18}, \hyperpage{24}
-  \item Eindopdracht, \hyperpage{46}
+  \item Edit Excel sheets, \hyperpage{34}
+  \item Editor, \hyperpage{18}, \hyperpage{23}
+  \item Eindopdracht, \hyperpage{42}
   \item Ethernet Shield, \hyperpage{7}
 
   \indexspace
 
-  \item Functies, \hyperpage{31}
+  \item Functies, \hyperpage{27}
 
   \indexspace
 
-  \item GPIO, \hyperpage{25}
+  \item GPIO, \hyperpage{23}
 
   \indexspace
 
-  \item Huiswerkopdrachten, \hyperpage{22}
+  \item Huiswerkopdrachten, \hyperpage{22}, \hyperpage{24}
 
   \indexspace
 
@@ -36,33 +36,33 @@
 
   \indexspace
 
-  \item Lijsten, \hyperpage{29}
-  \item Loops, \hyperpage{26}
+  \item Lijsten, \hyperpage{25}
+  \item Loops, \hyperpage{23}
 
   \indexspace
 
-  \item MQTT, \hyperpage{46}
+  \item MQTT, \hyperpage{42}
 
   \indexspace
 
-  \item Opdrachten, \hyperpage{26}, \hyperpage{31}, \hyperpage{35}, 
-		\hyperpage{39}, \hyperpage{42}
+  \item Opdrachten, \hyperpage{27}, \hyperpage{31}, \hyperpage{35}, 
+		\hyperpage{38}
 
   \indexspace
 
-  \item Packages, \hyperpage{34}
-  \item Pi header, \hyperpage{25}
-  \item pip, \hyperpage{35}
-  \item Plotten, \hyperpage{39}
-  \item Protocollen, \hyperpage{45}
-  \item pyGame, \hyperpage{42}
+  \item Packages, \hyperpage{30}
+  \item Pi header, \hyperpage{23}
+  \item pip, \hyperpage{31}
+  \item Plotten, \hyperpage{35}
+  \item Protocollen, \hyperpage{41}
+  \item pyGame, \hyperpage{38}
 
   \indexspace
 
-  \item Tuples, \hyperpage{30}
+  \item Tuples, \hyperpage{26}
 
   \indexspace
 
-  \item wxPython, \hyperpage{41}
+  \item wxPython, \hyperpage{37}
 
 \end{theindex}
