@@ -102,7 +102,15 @@ Het maakt bij \pyth{str}s dus ook niet uit of je nu enkele (\pyth{'}) of dubble 
 \textit{Python} heeft een aantal operatoren voor getallen die bekend voor zullen komen: \pyth{+}, \pyth{-}, \pyth{*} om resp. getallen op tellen, af te trekken en te vermenigvuldigen. Maar kent ook een aantal die wat minder voor de hand liggen. Probeer er achter te komen wat \pyth{%} en \pyth{**} doen.
 \end{exercise}
 
-Naast dat het bij \textit{Python} dus niet nodig is om van te voren te specificeren welk datatype je gaat gebruiken voor een var
+Naast dat het bij \textit{Python} dus niet nodig is om van te voren te specificeren welk datatype je gaat gebruiken voor een variabele, kun je ook variabelen van type laten veranderen gedurende het programma. Dit is voor de leesbaarheid niet aan te bevelen, maar het laat wel zien dat \textit{Python} veel losser om gaat met de verschillende types dan dat we gewend waren met \textit{C}:
+\begin{python}
+>>> x = 12  # x is nu een int
+>>> x
+12
+>>> x = 'abc'  # En vanaf hier een str
+>>> x
+'abc'
+\end{python}
 
 \section{If/Else statements}\index{If/Else statements}
 Een van de meest voorkomende en belangrijke dingen die er gebeurt in een programma, is keuzes maken op basis van condities. In z'n meest eenvoudige manier, doen we dat met een \pyth{if}-statement:
@@ -136,6 +144,8 @@ else:
 	print('a is kleiner of gelijk dan 100')
 \end{python}
 
+\newpage
+
 \textbf{Tip:} Als je niet zeker van jezelf bent wat er precies uit de conditie komt van je \pyth{if}-statement, kun je hier dus handig gebruik maken van de interpreter:
 \begin{python}
 >>> a = 200
@@ -143,7 +153,6 @@ else:
 True
 \end{python}
 
-\newpage
 Soms wil je meerdere condities checken, dit kan met \pyth{elif} (dit staat voor een samentrekking van \pyth{else if}). Je kan daarvan zoveel als je wil in je \pyth{if}-statement stoppen:
 \begin{python}
 a = 200
@@ -161,44 +170,70 @@ Typ het bovenstaande over in je editor, sla het op als een \textit{.py} bestand.
 \section{Input/Output}\index{Input/Output}
 Zo'n programma als hierboven, die afhankelijk van de waarde van een vast getal iets uitvoert is natuurlijk niet superspannend. Het wordt al interessanter als je input van de gebruiker van het programma kunt vragen. Dat doe je met de functie \pyth{input()}:
 \begin{python}
-print('Typ iets:')
+print('Typ iets: ')
 a = input()
 print('Je typte: ' + a)
 \end{python}
-\begin{exercise}
-Voer het bovenstaande uit
-\end{exercise}
 
-\section{Opdrachten}\index{Opdrachten}
-\begin{exercise}
-$\\$
-\end{exercise}
+\begin{remark}
+\textbf{Tip:} Regel $1$ en $2$ zijn ook te combineren tot \pyth{a = input('Typ iets: ')}.
+\end{remark}
 
 \begin{exercise}
-$\\$
+Voer het bovenstaande stuk code uit. Merk op dat halverwege het programma wordt gepauzeerd. Wat moet je doen om het programma weer verder te laten gaan?
 \end{exercise}
 
-\begin{exercise}
-$\\$
-\end{exercise}
+\begin{remark}
+\textbf{Tip:} In plaats van regel $3$, kun je ook gebruik maken van de zogeheten \textit{f-strings}. Dit is een wat efficiëntere manier van schrijven, maar doet precies hetzelfde: 
+\begin{python}
+print(f'Je typte: {a}')
+\end{python}
+Vooral bij langere wat langere strings, kan dit de leesbaarheid van je code bevorderen.
+\end{remark}
 
-\begin{exercise}
-$\\$
-\end{exercise}
+\newpage 
 
-\begin{exercise}
-$\\$
-\end{exercise}
-
-\begin{exercise}
-$\\$
+\section{Huiswerkopdrachten}\index{Huiswerkopdrachten}
+\begin{exercise} \label{exc:exc1}
+Maak een programma die de gebruiker om zijn naam vraagt. Groet hierna de gebruiker in de vorm van \textit{"Hallo, <naam>!"}.
 \end{exercise}
 
 \begin{exercise}
-$\\$
+Schrijf een programma die de gebruiker vraagt om de straal ($r$) van een cirkel in te typen. Geef daarna de omtrek (= $2*r*\pi$) en de oppervlakte (= $r^2*\pi$) op basis van de straal. \newline \newline
+\textbf{Tip 1:} Alles wat de gebruiker intypt, en je afvangt met \pyth{input()} is van het type string. Om van een string met cijfers, een daadwerkelijk getal te maken, gebruik je de functie \pyth{int()}. Bijv. \pyth{x = int('123')}.\newline \newline
+\textbf{Tip 2:} Zet bovenin je programma \pyth{import math}, je hebt daarna toegang tot allerlei wiskundige functies. Zo ook \pyth{math.pi} en \pyth{math.pow()}.
+\end{exercise}
+
+\begin{remark}
+\textbf{Tip:} Als je niet zeker van jezelf bent wat voor type een variabele krijgt, kun je ook hier handig gebruik maken van de interpreter en de functie \pyth{type()}:
+\begin{python}
+>>> a = 'een string'
+>>> b = 1.2
+>>> c = 4
+>>> type(a)
+<class 'str'>
+>>> type(b)
+<class 'float'>
+>>> type(c)
+<class 'int'>
+\end{python}
+\end{remark}
+
+\begin{exercise}
+Breidt het programma van opdracht \ref{exc:exc1} uit, zodat het programma de gebruiker vraagt om achtereenvolgens z'n voornaam, achternaam, geslacht en leeftijd. \newline
+Groet hierna de gebruiker in de vorm \textit{"Hallo, <voornaam>!"}. \newline
+Is de persoon in questie echter ouder dan 50, gebruik dan een formelere begroeting op basis van zijn of haar geslacht: \textit{"Gegroet, Mr. <achternaam>!"} of \textit{"Gegroet, Mevr. <achternaam>!"}
 \end{exercise}
 
 \begin{exercise}
-$\\$
+Maak een programma die de gebruiker vraagt om een getal, geef daarna aan of dat getal even of oneven is.
+\end{exercise}
+
+\begin{exercise}
+Schrijf een programma die de gebruiker vraagt om 2 getallen in te voeren, print daarna de grootste van de twee op het scherm. 
+\end{exercise}
+
+\begin{exercise}
+Schrijf een programma die de gebruiker vraagt om een getal. Dit getal correspondeert met een dag in de week ($1$ = maandag, $2$ = dinsdag, etc.). print de correspondeerde dag op het scherm. Als de gebruiker een getal groter dan $7$ of kleiner dan $1$ invoerd, geef dan een 'error'.
 \end{exercise}
 
