@@ -1,65 +1,64 @@
 \begin{theindex}
 
-  \item Classes, \hyperpage{29}
-  \item CSV files, \hyperpage{33}
+  \item Classes, \hyperpage{33}
+  \item CSV files, \hyperpage{37}
 
   \indexspace
 
-  \item Data Types, \hyperpage{18}
-  \item Draaien van scripts, \hyperpage{18}
+  \item Data Types, \hyperpage{19}
 
   \indexspace
 
-  \item Edit Excel sheets, \hyperpage{34}
-  \item Editor, \hyperpage{18}, \hyperpage{20}
-  \item Eindopdracht, \hyperpage{42}
+  \item Edit Excel sheets, \hyperpage{38}
+  \item Editor, \hyperpage{18}, \hyperpage{24}
+  \item Eindopdracht, \hyperpage{46}
   \item Ethernet Shield, \hyperpage{7}
 
   \indexspace
 
-  \item Functies, \hyperpage{27}
+  \item Functies, \hyperpage{31}
 
   \indexspace
 
-  \item GPIO, \hyperpage{21}
+  \item GPIO, \hyperpage{25}
 
   \indexspace
 
-  \item If/Else statements, \hyperpage{18}
-  \item Input/Output, \hyperpage{18}
+  \item If/Else statements, \hyperpage{20}
+  \item Input/Output, \hyperpage{21}
   \item Installatie, \hyperpage{17}
-  \item Interpreter, \hyperpage{18}
-  \item Introductie linux terminal, \hyperpage{19}
+  \item Interpreter, \hyperpage{17}
+  \item Introductie linux terminal, \hyperpage{23}
 
   \indexspace
 
-  \item Lijsten, \hyperpage{25}
-  \item Loops, \hyperpage{22}
+  \item Lijsten, \hyperpage{29}
+  \item Loops, \hyperpage{26}
 
   \indexspace
 
-  \item MQTT, \hyperpage{42}
+  \item MQTT, \hyperpage{46}
 
   \indexspace
 
-  \item Opdrachten, \hyperpage{18}, \hyperpage{22}, \hyperpage{27}, 
-		\hyperpage{31}, \hyperpage{35}, \hyperpage{38}
+  \item Opdrachten, \hyperpage{21}, \hyperpage{26}, \hyperpage{31}, 
+		\hyperpage{35}, \hyperpage{39}, \hyperpage{42}
 
   \indexspace
 
-  \item Packages, \hyperpage{30}
-  \item Pi header, \hyperpage{21}
-  \item pip, \hyperpage{31}
-  \item Plotten, \hyperpage{35}
-  \item Protocollen, \hyperpage{41}
-  \item pyGame, \hyperpage{38}
+  \item Packages, \hyperpage{34}
+  \item Pi header, \hyperpage{25}
+  \item pip, \hyperpage{35}
+  \item Plotten, \hyperpage{39}
+  \item Protocollen, \hyperpage{45}
+  \item pyGame, \hyperpage{42}
 
   \indexspace
 
-  \item Tuples, \hyperpage{26}
+  \item Tuples, \hyperpage{30}
 
   \indexspace
 
-  \item wxPython, \hyperpage{37}
+  \item wxPython, \hyperpage{41}
 
 \end{theindex}

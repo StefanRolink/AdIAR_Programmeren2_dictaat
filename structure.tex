@@ -499,9 +499,9 @@ innerbottommargin=5pt]{cBox}
 %----------------------------------------------------------------------------------------
 %	LINKS
 %----------------------------------------------------------------------------------------
-
+\renewcommand\UrlFont{\color{blue}\rmfamily\itshape} 
 \usepackage{hyperref}
-\hypersetup{hidelinks,backref=true,pagebackref=true,hyperindex=true,colorlinks=false,breaklinks=true,urlcolor=ocre,bookmarks=true,bookmarksopen=false}
+\hypersetup{hidelinks,backref=true,pagebackref=true,hyperindex=true,colorlinks=false,breaklinks=true,urlcolor=blue,bookmarks=true,bookmarksopen=false}
 
 \usepackage{bookmark}
 \bookmarksetup{
@@ -531,7 +531,6 @@ addtohook={%
 \usepackage[utf8]{inputenc}     
 \usepackage[english]{babel}
 \usepackage{graphicx}
-\usepackage{xcolor}
 \usepackage{lipsum}
 %%%%********************************************************************
 % fancy quotes
@@ -583,7 +582,7 @@ addtohook={%
  \makeatother
 
 %----------------------------------------------------------------------------------------
-%	LISTINGS
+%	LISTINGS: Arduino
 %----------------------------------------------------------------------------------------
 \usepackage{color}
 \usepackage{listings}    
@@ -723,3 +722,51 @@ addtohook={%
   frame=single,
   basicstyle=\ttfamily
 }
+
+%----------------------------------------------------------------------------------------
+%	LISTINGS: Python
+%----------------------------------------------------------------------------------------
+% \usepackage[utf8]{inputenc}
+
+% % Default fixed font does not support bold face
+% \DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+% \DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+% \definecolor{deepblue}{rgb}{0,0,0.5}
+% \definecolor{deepred}{rgb}{0.6,0,0}
+% \definecolor{deepgreen}{rgb}{0,0.5,0}
+
+% % Python style for highlighting
+% \newcommand\pythonstyle{\lstset{
+% language=Python,
+% basicstyle=\ttm,
+% morekeywords={self},              % Add keywords here
+% keywordstyle=\ttb\color{deepblue},
+% emph={MyClass,__init__},          % Custom highlighting
+% emphstyle=\ttb\color{deepred},    % Custom highlighting style
+% stringstyle=\color{deepgreen},
+% frame=single,                         % Any extra options here
+% showstringspaces=false
+% numbers=left,                    
+% numbersep=5pt,                   
+% numberstyle=\color{arduinoGrey},    
+% }}
+
+
+% % Python environment
+% \lstnewenvironment{python}[1][]
+% {
+% \pythonstyle
+% \lstset{#1}
+% }
+% {}
+
+% % Python for external files
+% \newcommand\pythonexternal[2][]{{
+% \pythonstyle
+% \lstinputlisting[#1]{#2}}}
+
+% % Python for inline
+% \newcommand\pythoninline[1]{{\pythonstyle\lstinline!#1!}}
+
+\usepackage{pythonhighlight}
