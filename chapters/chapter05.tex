@@ -14,7 +14,19 @@ Als we bepaalde onderdelen van onze code vaker uit willen voeren, kunnen we dat 
 for x in range(0, 10, 1):
 	print(x)
 \end{python}
-In het bovenstaande voorbeeld roepen we de functie \pyth{range()} aan met 3 argumenten. De eerste geeft het startgetal voor $x$ aan, de tweede bij welke waarde van $x$ de loop moet stoppen, en de derde en laatste met welke hoeveel we $x$ we moeten verhogen bij elke nieuwe iteratie. Dit voorbeeld print dus de getallen $0$ t/m $9$ op het scherm. 
+In het bovenstaande voorbeeld roepen we de functie \pyth{range()} aan met 3 argumenten. De eerste geeft het startgetal voor $x$ aan, de tweede bij welke waarde van $x$ de loop moet stoppen, en de derde en laatste met welke hoeveel we $x$ we moeten verhogen bij elke nieuwe iteratie. Dit voorbeeld print dus de getallen $0$ t/m $9$ op het scherm:
+\begin{python}
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+\end{python}
 
 \begin{remark}
 De functie \pyth{range()} kun je op $3$ verschillende manieren aanroepen:
@@ -31,24 +43,59 @@ Als tweede voorbeeld een loop die van $2$ t/m $25$ loopt, met stapjes van $3$:
 for x in range(2, 25, 3):
 	print(x)
 \end{python}
-Dit print het volgende uit: $2, 5, 8, 11, 14, 17, 20, 23$. De \pyth{for}-loop stopt na $23$, omdat $23+3 = 26$, wat hoger is dan $25$, de stop waarde.
+Dit print het volgende uit: $2, 5, 8, 11, 14, 17, 20, 23$. De \pyth{for}-loop stopt na $23$, omdat $23+3 = 26$, wat hoger is dan $25$, de stop waarde. \newline\newline
 
+Naast de \pyth{for}-loop, bestaat er ook de \pyth{while}-loop. Deze zit ook in \textit{C}, maar hebben we destijds niet gebruikt. Wellicht is het handig om te weten dat hij bestaat, en te snappen hoe je 'm gebruikt:
+\begin{python}
+i = 1
+while i < 6:
+	print(i)
+	i += 1
+\end{python}
+In het bovenstaand voorbeeld wordt de code in de \pyth{while}-loop uitgevoerd \textit{zolang} de conditie \pyth{i < 6} gelijk is aan \pyth{True}. We beginnen met \pyth{i = 1}, en tellen er elke keer \pyth{1} bij op, waardoor de uitvoer van het programma $1$ t/m $5$ is. \par
+
+Met een \pyth{while}-loop is ook vrij makkelijk een oneindige loop te maken, vergelijkbaar met de \textit{loop()}-functie bij de \textit{Arduino}:
+\begin{python}
+while True:
+	print('en door..')
+\end{python}
+
+\begin{remark}
+Het is bij zo'n loop wel handig om te weten hoe je 'm weer stopt. Want in de meeste gevallen maak je 'm per ongeluk. Bij een \textit{IDE} heb je naast een run knopt (groen driehoekje), vaak ook een stop knop (rood vierkantje). In de terminal kun je de toetscombinatie \text{Ctrl+C} gebruiken. 
+\end{remark}
+
+\newpage
 
 \section{Huiswerkopdrachten}\index{Huiswerkopdrachten}
 \begin{exercise}
-$\\$
+Schrijf een programma waarin je met een \pyth{while}-loop de eerste $10$ getallen van de tafel van $5$ print.
 \end{exercise}
 
 \begin{exercise}
-$\\$
+Schrijf een programma waarin je de gebruiker vraagt om een getal, en geef daarna de eerste $10$ getallen van de tafel voor dat getal. Gebruik hiervoor een \pyth{for}-loop.
 \end{exercise}
 
 \begin{exercise}
-$\\$
+Schrijf een programma die de getallen van $-10$ t/m $-1$ op scherm print. Gebruik hiervoor alleen de \pyth{range()}-functie in de \pyth{for}-loop (en natuurlijk een \pyth{print()} ;) ).
 \end{exercise}
 
+\begin{exercise}\label{exc5:exc4}
+Vraag aan de gebruiker een getal $l$, en print daarna een rij van sterretjes. Dus bij $l=7$, geeft het de volgende output:
+\begin{python}
+*******
+\end{python}
+\textbf{TIP:} Als je niet wilt dat een \pyth{print}-functie elke keer een nieuwe regel begint, kun je dit veranderen door het \textit{end}-argument te gebruiken: \pyth{print('*', end='')}. 
+\end{exercise}
+
+
 \begin{exercise}
-$\\$
+Breid Vraag \ref{exc4:exc1} uit. Vraag aan de gebruiker nu $2$ getallen: $h$ en $l$. Print daarna een vierkant van sterretjes ter grootte van $h \times l$. Dus bij $h=3$ en $l=5$, geeft het de volgende output:
+\begin{python}
+*****
+*****
+*****
+\end{python}
+\textbf{TIP:} Je kunt loops in loops zetten. 
 \end{exercise}
 
 \begin{exercise}
