@@ -1,10 +1,45 @@
-\chapter{Diepere duik in Python}
+\chapter{Diepere duik}
+Deze week gaan kijken naar enkele concepten die ons leven als programmeur een stukje makkelijker kunnen gaan maken. We gaan eerst een blik werpen op verzamelingen in de vorm van \textit{lijsten}, \textit{Dictionaries} en \textit{tuples}. Daarna de robuustheid van onze code aanzienlijk verbeteren met \pyth{Try} / \pyth{Except}-blokken en ten slotte meer structuur aanbrengen met de introductie van \textit{functies}. 
 
 \section{Lijsten}\index{Lijsten}
 
+
 \section{Tuples}\index{Tuples}
 
-\section{Try / Catch}\index{Tuples}
+\section{Dictionaries}\index{Dictionaries}
+
+\section{Try ... Except}\index{Try ... Except}
+Je bent ze inmiddels ongetwijfeld tijdens het maken van de huiswerkopdrachten (of elders) tegengekomen: \textit{errors}. Bijv. bij het opvragen van gegevens bij de gebruiker, via de \pyth{input()}-functie:
+\begin{python}
+x = input('Geef een cijfer: ')
+x = int(x)  # Zet de input-string om naar een int, en sla dit weer op in 'x'.
+x += 1  # Tel er 1 bij op
+print(f'Een hoger is: {x}')
+\end{python}
+Deze code runt doorgaans prima:
+\begin{python}
+Geef een cijfer: 12
+Een hoger is: 13
+\end{python}
+Maar wat nu als de gebruiker iets verkeerds intypt? Bijv. een letter:
+\begin{python}
+Geef een cijfer: q
+Traceback (most recent call last):
+  File "/Users/stefan/Code/Python/err_test.py", line 2, in <module>
+    x = int(x)  # Zet de input-string om naar een int, en sla dit weer op in 'x'.
+ValueError: invalid literal for int() with base 10: 'q'
+\end{python}
+Dan krijg je dus een \textit{error} voor je kiezen, in dit geval een \pyth{ValueError}. Bijkomend nadeel: het programma sluit direct af (crasht). Gelukkig geeft \pyth{Python} bij errors vaak genoeg informatie waarmee je de bug je in je code kunt oplossen. Hierboven kun je lezen dat er iets mis gaat op regel $2$: \pyth{x = int(x)}, op het moment dat we de \pyth{str} $q$ om proberen te zetten naar een \pyth{int}. En dat is best te verklaren natuurlijk, $q$ is domweg geen getal. 
+
+\begin{remark}
+\textbf{Tip: } Mocht je nu op zoek zijn naar de \textit{ASCII}-waarde van een karakter, gebruik dan de \pyth{ord()}-functie:
+\begin{python}
+>>> ord('a')
+97
+>>> ord('b')
+98
+\end{python}
+\end{remark}
 
 \section{Functies}\index{Functies}
 

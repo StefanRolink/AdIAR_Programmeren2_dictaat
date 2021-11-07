@@ -1,30 +1,31 @@
 \begin{theindex}
 
-  \item Classes, \hyperpage{29}
-  \item CSV file edit, \hyperpage{29}
+  \item Classes, \hyperpage{31}
+  \item CSV file edit, \hyperpage{31}
 
   \indexspace
 
   \item Data Types, \hyperpage{19}
+  \item Dictionaries, \hyperpage{27}
 
   \indexspace
 
   \item Editor, \hyperpage{18}, \hyperpage{23}
   \item Ethernet Shield, \hyperpage{7}
-  \item Excel file edit, \hyperpage{29}
+  \item Excel file edit, \hyperpage{31}
 
   \indexspace
 
-  \item Functies, \hyperpage{27}
+  \item Functies, \hyperpage{28}
 
   \indexspace
 
-  \item GPIO, \hyperpage{23}
+  \item GPIO, \hyperpage{24}
 
   \indexspace
 
-  \item HTTP, \hyperpage{31}
-  \item Huiswerkopdrachten, \hyperpage{22}, \hyperpage{25}
+  \item HTTP, \hyperpage{33}
+  \item Huiswerkopdrachten, \hyperpage{22}, \hyperpage{26}
 
   \indexspace
 
@@ -37,30 +38,31 @@
   \indexspace
 
   \item Lijsten, \hyperpage{27}
-  \item Loops, \hyperpage{23}
+  \item Loops, \hyperpage{24}
 
   \indexspace
 
-  \item Matplotlib, \hyperpage{29}
-  \item MQTT?, \hyperpage{31}
+  \item Matplotlib, \hyperpage{31}
+  \item MQTT?, \hyperpage{33}
 
   \indexspace
 
-  \item Opdrachten, \hyperpage{28}, \hyperpage{30}, \hyperpage{32}
+  \item Opdrachten, \hyperpage{29}, \hyperpage{32}, \hyperpage{34}
 
   \indexspace
 
-  \item Packages, \hyperpage{29}
-  \item Pi header, \hyperpage{23}
-  \item pip, \hyperpage{29}
-  \item Protocollen, \hyperpage{31}
+  \item Packages, \hyperpage{31}
+  \item Pi header, \hyperpage{24}
+  \item pip, \hyperpage{31}
+  \item Protocollen, \hyperpage{33}
 
   \indexspace
 
+  \item Try ... Except, \hyperpage{27}
   \item Tuples, \hyperpage{27}
 
   \indexspace
 
-  \item UART, \hyperpage{31}
+  \item UART, \hyperpage{33}
 
 \end{theindex}

@@ -5,7 +5,26 @@
 \section{Editor}\index{Editor}
 Net als bij je laptop is het ook op de \textit{Pi} handiger om een \textit{IDE} te gebruiken. Als het goed is staat \textit{Thonny} standaard geïnstalleerd, maar ook hier mag je alles gebruiken wat je zelf prettig vindt. Tijdens de lessen wordt zoals eerder vermeld met Thonny gewerkt. \newline
 
-Mocht \textit{Thonny} of je favoriete editor nog niet geïnstalleerd zijn, is dit een mooi moment om te kijken dat eigenlijk gaat onder \textit{Linux}.
+Mocht \textit{Thonny} of je favoriete editor nog niet geïnstalleerd zijn, is dit een mooi moment om te kijken dat eigenlijk gaat onder \textit{Linux}. Je kunt hiervoor de grafische \textit{Add/Remove Software}-tool voor gebruiken:
+\begin{figure}[h!]
+\centering\includegraphics[scale=0.35]{Pictures/chapter05/add_remove_software.png}
+\caption{\textit{Add/Remove Software} tool}
+\label{fig:addremovesoftware} % Unique label used for referencing the figure in-text
+%\addcontentsline{toc}{figure}{Figure \ref{fig:webserver}} % Uncomment to add the figure to the table of contents
+\end{figure}
+
+\begin{remark}
+Een beetje hacker doet dit vaak via de \textit{Terminal}. Ook omdat de \textit{Pi} niet altijd aangesloten is op een scherm, is het ook handig om te weten hoe dit werkt. Allereerst zorg je ervoor dat alle lijsten met software die je kunt installeren up-to-date is:
+\begin{lstlisting}[language=bash]
+sudo apt-get update
+\end{lstlisting}
+
+Daarna installeer je het programma in kwestie:
+\begin{lstlisting}[language=bash]
+sudo apt-get install thonny
+\end{lstlisting}
+Als dit klaar is, is je vers geïnstalleerde programma te vinden in het \textit{Pi-menu} linksboven.
+\end{remark}
 
 \section{Pi header}\index{Pi header}
 
