@@ -278,3 +278,5 @@ TSWLatexianTemp*
 .DS_Store
 *.*~
 tags
+*.ptc
+*.out.ps
