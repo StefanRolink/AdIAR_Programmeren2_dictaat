@@ -1,31 +1,33 @@
 \begin{theindex}
 
-  \item Classes, \hyperpage{31}
-  \item CSV file edit, \hyperpage{31}
+  \item Classes, \hyperpage{37}
+  \item CSV file edit, \hyperpage{37}
 
   \indexspace
 
   \item Data Types, \hyperpage{19}
-  \item Dictionaries, \hyperpage{27}
+  \item Dictionaries, \hyperpage{33}
 
   \indexspace
 
-  \item Editor, \hyperpage{18}, \hyperpage{23}
+  \item Editor, \hyperpage{18}, \hyperpage{25}
   \item Ethernet Shield, \hyperpage{7}
-  \item Excel file edit, \hyperpage{31}
+  \item Excel file edit, \hyperpage{37}
 
   \indexspace
 
-  \item Functies, \hyperpage{28}
+  \item Functies, \hyperpage{34}
 
   \indexspace
 
-  \item GPIO, \hyperpage{24}
+  \item GPIO, \hyperpage{27}
+  \item GPIO: input, \hyperpage{29}
+  \item GPIO: output, \hyperpage{27}
 
   \indexspace
 
-  \item HTTP, \hyperpage{33}
-  \item Huiswerkopdrachten, \hyperpage{22}, \hyperpage{26}
+  \item HTTP, \hyperpage{39}
+  \item Huiswerkopdrachten, \hyperpage{22}, \hyperpage{31}
 
   \indexspace
 
@@ -33,36 +35,35 @@
   \item Input/Output, \hyperpage{21}
   \item Installatie, \hyperpage{17}
   \item Interpreter, \hyperpage{17}
-  \item Introductie linux terminal, \hyperpage{23}
 
   \indexspace
 
-  \item Lijsten, \hyperpage{27}
-  \item Loops, \hyperpage{24}
+  \item Lijsten, \hyperpage{33}
+  \item Loops, \hyperpage{23}
 
   \indexspace
 
-  \item Matplotlib, \hyperpage{31}
-  \item MQTT?, \hyperpage{33}
+  \item Matplotlib, \hyperpage{37}
+  \item MQTT?, \hyperpage{39}
 
   \indexspace
 
-  \item Opdrachten, \hyperpage{29}, \hyperpage{32}, \hyperpage{34}
+  \item Opdrachten, \hyperpage{35}, \hyperpage{38}, \hyperpage{40}
 
   \indexspace
 
-  \item Packages, \hyperpage{31}
-  \item Pi header, \hyperpage{24}
-  \item pip, \hyperpage{31}
-  \item Protocollen, \hyperpage{33}
+  \item Packages, \hyperpage{37}
+  \item Pi header, \hyperpage{26}
+  \item pip, \hyperpage{37}
+  \item Protocollen, \hyperpage{39}
 
   \indexspace
 
-  \item Try ... Except, \hyperpage{27}
-  \item Tuples, \hyperpage{27}
+  \item Try ... Except, \hyperpage{33}
+  \item Tuples, \hyperpage{33}
 
   \indexspace
 
-  \item UART, \hyperpage{33}
+  \item UART, \hyperpage{39}
 
 \end{theindex}

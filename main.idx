@@ -6,27 +6,28 @@
 \indexentry{If/Else statements|hyperpage}{20}
 \indexentry{Input/Output|hyperpage}{21}
 \indexentry{Huiswerkopdrachten|hyperpage}{22}
-\indexentry{Introductie linux terminal|hyperpage}{23}
-\indexentry{Editor|hyperpage}{23}
-\indexentry{Pi header|hyperpage}{24}
-\indexentry{GPIO|hyperpage}{24}
-\indexentry{Loops|hyperpage}{24}
-\indexentry{Huiswerkopdrachten|hyperpage}{26}
-\indexentry{Lijsten|hyperpage}{27}
-\indexentry{Tuples|hyperpage}{27}
-\indexentry{Dictionaries|hyperpage}{27}
-\indexentry{Try ... Except|hyperpage}{27}
-\indexentry{Functies|hyperpage}{28}
-\indexentry{Opdrachten|hyperpage}{29}
-\indexentry{Classes|hyperpage}{31}
-\indexentry{Packages|hyperpage}{31}
-\indexentry{pip|hyperpage}{31}
-\indexentry{CSV file edit|hyperpage}{31}
-\indexentry{Excel file edit|hyperpage}{31}
-\indexentry{Matplotlib|hyperpage}{31}
-\indexentry{Opdrachten|hyperpage}{32}
-\indexentry{Protocollen|hyperpage}{33}
-\indexentry{UART|hyperpage}{33}
-\indexentry{HTTP|hyperpage}{33}
-\indexentry{MQTT?|hyperpage}{33}
-\indexentry{Opdrachten|hyperpage}{34}
+\indexentry{Loops|hyperpage}{23}
+\indexentry{Editor|hyperpage}{25}
+\indexentry{Pi header|hyperpage}{26}
+\indexentry{GPIO|hyperpage}{27}
+\indexentry{GPIO: output|hyperpage}{27}
+\indexentry{GPIO: input|hyperpage}{29}
+\indexentry{Huiswerkopdrachten|hyperpage}{31}
+\indexentry{Lijsten|hyperpage}{33}
+\indexentry{Tuples|hyperpage}{33}
+\indexentry{Dictionaries|hyperpage}{33}
+\indexentry{Try ... Except|hyperpage}{33}
+\indexentry{Functies|hyperpage}{34}
+\indexentry{Opdrachten|hyperpage}{35}
+\indexentry{Classes|hyperpage}{37}
+\indexentry{Packages|hyperpage}{37}
+\indexentry{pip|hyperpage}{37}
+\indexentry{CSV file edit|hyperpage}{37}
+\indexentry{Excel file edit|hyperpage}{37}
+\indexentry{Matplotlib|hyperpage}{37}
+\indexentry{Opdrachten|hyperpage}{38}
+\indexentry{Protocollen|hyperpage}{39}
+\indexentry{UART|hyperpage}{39}
+\indexentry{HTTP|hyperpage}{39}
+\indexentry{MQTT?|hyperpage}{39}
+\indexentry{Opdrachten|hyperpage}{40}
