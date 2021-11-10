@@ -199,13 +199,19 @@ while True:
         sleep(0.25)                     # Wacht 250ms.
 \end{python}
 
-% Zodra de knop wordt ingedrukt (we lezen de status uit door \python{Rpi.GPIO.input()} aan te roepen op regel $2$), wordt er iets naar het scherm geschreven dat het gelukt is.
+% \begin{remark}
+% In plaats van de \pyth{not} in de \pyth{if}-statement zetten, zou je ook regel $9$ aan kunnen passen naar:
+% \begin{python}
+% RPi.GPIO.setup(button_pin, RPi.GPIO.IN, RPi.GPIO.PUD_DOWN)
+% \end{python}
+% Zodat er een \textit{pull-down} weerstand intern wordt gebruikt.
+% \end{remark}
+
+Zodra de knop wordt ingedrukt (we lezen de status uit door \pyth{Rpi.GPIO.input()} aan te roepen op regel $12$), wordt er iets naar het scherm geschreven dat het gelukt is.
 
 \begin{exercise}
 Wat gebeurt er als je de knop ingedrukt blijft houden? En wat als je de \pyth{sleep()} regel verwijderd?
 \end{exercise}
-
-\newpage
 
 Precies hetzelfde kunnen we ook bereiken door de \pyth{gpiozero}-module te gebruiken:
 \begin{python}
