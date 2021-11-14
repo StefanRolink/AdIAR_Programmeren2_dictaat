@@ -1,17 +1,11 @@
 \begin{theindex}
 
-  \item Classes, \hyperpage{41}
-  \item CSV file edit, \hyperpage{41}
-
-  \indexspace
-
   \item Data Types, \hyperpage{19}
 
   \indexspace
 
   \item Editor, \hyperpage{18}, \hyperpage{25}
   \item Ethernet Shield, \hyperpage{7}
-  \item Excel file edit, \hyperpage{41}
 
   \indexspace
 
@@ -25,7 +19,6 @@
 
   \indexspace
 
-  \item HTTP, \hyperpage{43}
   \item Huiswerkopdrachten, \hyperpage{22}, \hyperpage{31}, 
 		\hyperpage{40}
 
@@ -43,26 +36,10 @@
 
   \indexspace
 
-  \item Matplotlib, \hyperpage{41}
-  \item MQTT?, \hyperpage{43}
-
-  \indexspace
-
-  \item Opdrachten, \hyperpage{42}, \hyperpage{44}
-
-  \indexspace
-
-  \item Packages, \hyperpage{41}
   \item Pi header, \hyperpage{26}
-  \item pip, \hyperpage{41}
-  \item Protocollen, \hyperpage{43}
 
   \indexspace
 
   \item Try ... Except, \hyperpage{34}
-
-  \indexspace
-
-  \item UART, \hyperpage{43}
 
 \end{theindex}
