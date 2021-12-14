@@ -7,16 +7,20 @@ Omdat dit een van de belangrijkste en handigste concepten van het programmeren i
 
 
 \section{Packages}\index{Packages}
-Een \textit{Package} in \textit{Python} is een verzameling van modules. Deze modules kunnen we weer in onze code gebruiken door deze te importeren met \pyth{import}. We hbben er in middel al een aantal van gebruikt bijv.: \pyth{math, time, gpiozero, RPi.GPIO}, maar deze worden allemaal standaard meegeleverd. Je kunt ze ook heel eenvoudig zelf toevoegen aan je \textit{Python} omgeving, door gebruik te maken van \pyth{pip}. Dit programma kun je aanroepen vanaf de terminal:
+Een \textit{Package} in \textit{Python} is een verzameling van modules. Deze modules kunnen we weer in onze code gebruiken door deze te importeren met \pyth{import}. We hbben er in middel al een aantal van gebruikt bijv.: \pyth{math, time, gpiozero, RPi}, maar deze worden allemaal standaard meegeleverd. Je kunt ze ook heel eenvoudig zelf toevoegen aan je \textit{Python} omgeving, door gebruik te maken van \pyth{pip}. Dit programma kun je aanroepen vanaf de terminal:
 \begin{lstlisting}[language=bash]
 python3 -m pip install <naam_package>
 \end{lstlisting}
 
 \begin{remark}
-  Je hebt ongetwijfeld al een hele lijst geïnstalleerd zonder dat je het wist, je kunt het bekijken door het onderstaande in een terminal in te typen: 
-  \begin{lstlisting}[language=bash]
-  python3 -m pip list
-  \end{lstlisting}
+Je hebt ongetwijfeld al een hele lijst geïnstalleerd zonder dat je het wist, je kunt het bekijken door het onderstaande in een terminal in te typen: 
+\begin{lstlisting}[language=bash]
+python3 -m pip list
+\end{lstlisting}
+En wil je wat schijfruimte vrij maken door packages te verwijderen die je niet langer gebruikt, kan dat met:
+\begin{lstlisting}[language=bash]
+python3 -m pip uninstall <naam_package>
+\end{lstlisting}
 \end{remark}
 
 Om een beetje bekend te raken met \textit{pip}, gaan we als voorbeeld een kleine package installeren genaamd \pyth{camelcase}:
@@ -39,21 +43,20 @@ Het aanpassen van hoofdletters is echter niet al te spannend, dus gaan we verder
   Installeer Matplotlib
 \end{exercise}
 
+\section{matplotlib}\index{matplotlib}
+
+\begin{figure}[h!]
+\centering\includegraphics[scale=0.25]{Pictures/chapter07/matplotlib_logo.png}
+% \caption{\small \textit{Matplotlib} logo. Bron: \url{https://matplotlib.org}}
+\label{fig:mpllogo} % Unique label used for referencing the figure in-text
+%\addcontentsline{toc}{figure}{Figure \ref{fig:webserver}} % Uncomment to add the figure to the table of contents
+\end{figure}
+
 Matplotlib is een verzameling aan tools voor het maken en bewerken van grafieken. Om het te gebruiken in z'n meest simpele vorm zorg je ervoor dat je een reeks $x$-waardes hebt, en een reeks bijbehorende $y$-waardes. Deze kun je dan plotten (het daadwerkelijk tekenen van de grafiek) en de resulterende grafiek kun je tonen op het scherm.
 
-\begin{python}
-import matplotlib.pyplot as plt
+\inputpython{code/chapter07/plot1.py}
 
-# Creeer x en y waardes ahv lijsten:
-x = [0,1,2,3,4,5,6,7,8,9] 
-y = [2,3,4,5,1,2,3,4,7,1]
-
-# Plot de waardes, en laat hierna de grafiek zien:
-plt.plot(x, y)
-plt.show()
-\end{python}
-
-Hieruit rolt de de grafiek uit \ref{fig:plot1}:
+Hieruit rolt de grafiek \ref{fig:plot1} uit:
 \begin{figure}[h!]
 \centering\includegraphics[scale=0.7]{Pictures/chapter07/plot1.png}
 \caption{Simpele plot met \textit{Matplotlib}}
@@ -69,10 +72,50 @@ sudo apt-get install at-spi2-core
 \end{lstlisting}
 \end{remark}
 
+Een grafiek is natuurlijk pas echt bruikbaar als deze netjes is opgemaakt met duidelijke labels voor de assen en eventueel een titel en een legenda. Ook dat is snel gepiept met \textit{matplotlib}. In het onderstaande stuk code voegen we dit toe aan ons eerdere script. Daarnaast is er een extra set met $y$-waardes toegevoegd, om $2$ verschillende meetmomenten na te bootsen.
 
-\inputpython{code/chapter07/plot1.py}{1}{24}
+\inputpython{code/chapter07/plot2.py}
 
+De bonenstaande code produceert onderstaande grafiek \ref{fig:plot2}:
+\begin{figure}[h!]
+\centering\includegraphics[scale=0.7]{Pictures/chapter07/plot2.png}
+\caption{Uitgebreidere plot met \textit{Matplotlib}}
+\label{fig:plot2} 
+%\addcontentsline{toc}{figure}{Figure \ref{fig:webserver}} % Uncomment to add the figure to the table of contents
+\end{figure}
 
+\begin{exercise}
+Zorg dat de eerste lijn rood gekleurd (\pyth{color}) wordt, en de tweede lijn groen en gestippeld (\pyth{linestyle}). \\
+\textbf{TIP: } Gebruik hiervoor de documentatie van de packge op: \url{https://matplotlib.org}. 
+\end{exercise}
+
+\subsection{NumPy}\index{NumPy}
+
+\begin{figure}[h!]
+\centering\includegraphics[scale=0.5]{Pictures/chapter07/numpy_logo.png}
+% \caption{\small \textit{Matplotlib} logo. Bron: \url{https://matplotlib.org}}
+\label{fig:numpylogo} % Unique label used for referencing the figure in-text
+%\addcontentsline{toc}{figure}{Figure \ref{fig:webserver}} % Uncomment to add the figure to the table of contents
+\end{figure}
+
+De mogelijkheden van \textit{matplotlib} kunnen enorm uitgebreid worden in combinatie met andere packages. Een voor de hand liggende keuze daarin is bijvoorbeeld \textit{NumPy}. Die een enorm scala aan wiskundige tools met zich meebrengt. 
+
+\begin{exercise}
+Installeer NumPy 
+\end{exercise}
+We kunnen met de combinatie \textit{NumPy} en \textit{matplotlib} bijv. elke wiskunde functie die we kunnen bedenken op een makkelijke en overzichtelijke wijze plotten. Als voorbeeldje volgt hieronder een klein scriptje die $y = sin(x)$ plot op een bereik van $-\pi$ tot $\pi$:
+\inputpython{code/chapter07/plot_numpy.py}
+
+De bonenstaande code produceert onderstaande grafiek \ref{fig:plot3}:
+\begin{figure}[h!]
+\centering\includegraphics[scale=0.7]{Pictures/chapter07/sin.png}
+\caption{Een sinus-functie tekenen met \textit{Matplotlib} en \textit{NumPy}.}
+\label{fig:plot3} 
+%\addcontentsline{toc}{figure}{Figure \ref{fig:webserver}} % Uncomment to add the figure to the table of contents
+\end{figure}
+
+Op regel $5$ wordt hier een reeks aan getallen gegenereerd door de \pyth{np.arange()}-functie. Valt je op dat deze functie nagenoeg hetzelfde eruit ziet (en werkt!) als de ingebouwde \pyth{range()}-functie? Het verschil zit 'm in dat \pyth{np.arange()} ook komma-getallen (floats) kan genereren. \\ 
+Om een soortgelijke reden gebruiken we op regel $7$ \pyth{np.sin()} in plaats van \pyth{math.sin()}. De sinus functie uit \textit{NumPy} kan namelijk de sinus van een hele reeks getallen uitrekenen en dit weer teruggeven als een reeks getallen. De sinus-functie uit \pyth{math} ken enkel de sinus uitrekenen op $1$ getal per keer.
   
 
 % \subsection{pip}\index{pip}

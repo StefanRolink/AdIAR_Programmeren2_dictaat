@@ -280,3 +280,4 @@ TSWLatexianTemp*
 tags
 *.ptc
 *.out.ps
+__pycache__
