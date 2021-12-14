@@ -250,7 +250,7 @@ De laatste regel \pyth{pause()}, zorgt dat het programma verder niets meer uitvo
 Het mooie van het kunnen koppelen van functies aan gebeurtenissen van een sensor (zoals hier in het geval van de drukknop), is dat dat ook functies kunnen zijn die gebruikt worden door actuatoren, zoals bijv. een LED. Een LED heeft een \pyth{on()}- en een \pyth{off()}-functie. Dus het koppelen van een LED aan een drukknop kan zo:
 
 \begin{python}
-from gpiozero import Buttons, LED
+from gpiozero import Button, LED
 from signal import pause
 
 btn = Button(2)  # Drukknop zit op GPIO2
@@ -326,6 +326,6 @@ Sluit $4$ LEDs aan op de \textit{GPIO17}, \textit{GPIO18}, \textit{GPIO3} en \te
 \end{exercise}
 
 \begin{exercise}
-Maak een programma die $10$ keer aan de gebruiker vraagt om een dier in te voeren. Voeg elk van deze dieren toe aan een lijst. Filter alle diernamen die minder dan $3$ letters hebben en print daarna de lijst in alfabetische volgorde op het scherm. \newline
+Maak een programma dat $10$ keer aan de gebruiker vraagt om een dier in te voeren. Voeg elk van deze dieren toe aan een lijst. Filter alle diernamen die minder dan $3$ letters hebben en print daarna de lijst in alfabetische volgorde op het scherm. \newline
 \textbf{Tip:} Je bepaalt de lengte van een string (of lijst) met de functie: \pyth{len(mijn_string)}.
 \end{exercise}
