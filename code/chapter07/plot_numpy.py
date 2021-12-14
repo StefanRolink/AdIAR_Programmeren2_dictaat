@@ -5,8 +5,10 @@ import numpy as np
 x = np.arange(-np.pi, np.pi, 0.1)
 
 # Bereken y-waardes door sinus uit te rekenen voor alle x-waardes:
-y = np.sin(x)
+y = np.sin(2*x)
+y2 = 2*np.cos(4*x)
 
 # Plot de sinus en laat grafiek zien:
 plt.plot(x, y)
+plt.plot(x, y2)
 plt.show()
