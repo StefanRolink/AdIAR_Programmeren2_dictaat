@@ -281,5 +281,5 @@ tags
 *.ptc
 *.out.ps
 __pycache__
-*.xslx
+*.xlsx
 *.csv

@@ -30,12 +30,9 @@ Laten we onze nieuwe klasse-definitie eens gebruiken. Sla het bovenstaande stukj
 
 \inputpython{code/chapter07/obj1_use.py}
 
-De bovenstaande code heeft deze uitvoer:
-\begin{python}
-Deze cirkel heeft een straal van: 10cm.
-En daarmee een omtrek van: 62.83cm.
-En heeft een oppervlakte van: 314.16cm^2.
-\end{python}
+\begin{remark}
+Let op: Importeren op deze manier werk alleen als beide bestanden in dezelfde folder staan.
+\end{remark}
 
 Ook dit stukje code heeft wellicht een beetje uitleg nodig. Op de eerste regel importeren we ons bestand \pyth{cirkel} en uit dat bestand willen we onze klasse-definitie \pyth{Cirkel} gebruiken. Je kunt dus meerdere klasse-definities in een bestand zetten en je importeert alleen diegene die je wilt gebruiken. \\ 
 
@@ -46,12 +43,46 @@ Komt deze regel bekend voor? Toen ik eerder stelde dat we stiekem al vaker met o
 Zo hebben bijv. een tijdje terug al op deze manier een \pyth{LED} en een \pyth{Button} aangemaakt (\pyth{led = LED(17)} en \pyth{btn = Button(2)}). De klasse-definities van deze stonden namelijk in de package \pyth{gpiozero}. Zelf bij de \textit{Arduino} gebruikten we dit soms op plekken bijv. \pyth{Serial.print();}
 \end{remark}
 
-Na het aanmaken van het object \pyth{my_circ}, kunnen we deze gebruiken en bijv. de functies die het heeft aanroepen. Dit gebeurt op regel $7 \& 8$. De waardes die de functies teruggeven worden opgeslagen in \pyth{omt} en \pyth{opp} en deze worden uiteindelijk in de laatste $3$ regels op een nette manier naar het scherm geschreven. 
+Na het aanmaken van het object \pyth{my_circ}, kunnen we deze gebruiken en bijv. de functies die het heeft aanroepen. Dit gebeurt op regel $7 \& 8$ (zie je dat hier niets meer te zien is van de \pyth{self}). De waardes die de functies teruggeven worden opgeslagen in de variabelen \pyth{omt} en \pyth{opp} en deze worden uiteindelijk in de laatste $3$ regels op een nette manier naar het scherm geschreven: \\ 
+
+\begin{python}
+Deze cirkel heeft een straal van: 10cm.
+En daarmee een omtrek van: 62.83cm.
+En heeft een oppervlakte van: 314.16cm^2.
+\end{python}
+
+\newpage
 
 \subsection{Constructors}\index{Constructors}
-Het voordeel van object geörienteerd programmeren is dat de gemaakte objecten heel makkelijk herbruikbaar (en uitbreidbaar) zijn. Hierdoor is je code ook makkelijker te onderhouden en is er als het goed is een duidelijke structuur in je projecten terug te zien. \\
-In ons \pyth{Cirkel}-voorbeeldje is de herbruikbaarheid van de code nog niet zo duidelijk, omdat de cirkel in dit geval alijd een straal van $10$cm heeft. Je zou deze eigenlijk flexibel willen aanpassen naar je wensen. Dit kan heel mooi met een \textit{constructor}. Dit is namelijk de functie die wordt aangeroepen door \textit{Python} (dus automatisch) wanneer je een object aanmaakt, dus in dit geval bij \pyth{my_circle = Cirkel()}.
+Het voordeel van object geörienteerd programmeren is dat de gemaakte objecten makkelijk herbruikbaar (en uitbreidbaar) zijn. Hierdoor is je code ook makkelijker te onderhouden en is er als het goed is een duidelijke structuur in je projecten terug te zien. \\
 
+In ons \pyth{Cirkel}-voorbeeldje is de herbruikbaarheid van de code nog niet zo duidelijk, omdat de cirkel in dit geval alijd een straal van $10$cm heeft. Je zou deze eigenlijk flexibel willen aanpassen naar je wensen. Dit kan heel mooi met een \textit{constructor}. De \textit{constructor} is de functie die wordt aangeroepen door \textit{Python} (dus automatisch) wanneer je een object aanmaakt, dus in dit geval dus bij de regel: \pyth{my_circle =} \pyth{Cirkel()}. \\ 
+
+Zo'n \textit{constructor} is dus optioneel, we hebben 'm immers nog niet aangemaakt. Laten we er nu eentje maken voor onze cirkel-definitie. Een constructor is gewoon een functie, maar met een vaste (en wat gekke) naam: \pyth{__init__(self)} (met $2$ keer $2$ liggende streepjes). Zie het onderstaande voorbeeld:
+
+\inputpython{code/chapter07/obj2.py}
+
+In de bovenstaande code is niet veel veranderd ten opzichte van de vorige versie van \textit{cirkel.py}. De klasse-variabele \pyth{r} is nu standaard $0$ en dient nu een waarde te krijgen via de constructor. Ook zijn de functies wat compacter geschreven, maar functioneel exact hetzelfde. \\
+
+De daadwerkelijke constructor zien we op regels $7$-$9$. Zoals gezegd heeft deze een vaste naam, en naast het argument \pyth{self} is er ook een argument \pyth{r}. Hiermee kun je dus de gewenste straal opgeven als je een object maakt. Laten we dat eens doen:
+
+\begin{python}
+from cirkel import Cirkel
+
+# Maak een Cirkel, met de naam my_circ en een straal van 5:
+my_circ  = Cirkel(5)   
+
+# Maak een Cirkel, met de naam my_circ2 en een straal van 25:
+my_circ2 = Cirkel(25) 
+\end{python}
+
+Bij het aanmaken van het objet, bepalen we dus pas de straal van de cirkel. En hebben we op deze manier een flexibel object gemaakt die we steeds opnieuw kunnen gebruiken en makkelijk kunnen uitbreiden. Willen we bijv. een functie wijzigen of toevoegen, dan hoeven we dat maar op een plek te doen: in de klasse-definitie in \pyth{cirkel.py}. Overal waar we dan een object ervan gebruiken zal deze nieuwe functionalteit dan beschikbaar komen. 
+
+\newpage
+
+Object georiënteerd programmeren is niet het makkelijkste onderwerp om compleet te begrijpen. Als je hier voor het eerst naar kijkt kan dit wellicht nog een beetje criptisch en abstract overkomen. Daarom geef ik in dit hoofdstuk nog een voorbeeld voordat we verder gaan met andere onderwerpen. \\
+
+Laten we het eens proberen met wat simpele hardware, een LED. We gebruikten vaak de \pyth{LED} klasse 
 
 \newpage
 
