@@ -1,5 +1,9 @@
 \begin{theindex}
 
+  \item Constructors, \hyperpage{43}
+
+  \indexspace
+
   \item Data Types, \hyperpage{19}
 
   \indexspace
@@ -36,21 +40,21 @@
 
   \indexspace
 
-  \item matplotlib, \hyperpage{42}
+  \item matplotlib, \hyperpage{44}
 
   \indexspace
 
-  \item NumPy, \hyperpage{44}
+  \item NumPy, \hyperpage{46}
 
   \indexspace
 
   \item Object georiënteerd programmeren, \hyperpage{41}
-  \item Opdrachten, \hyperpage{50}
+  \item Opdrachten, \hyperpage{53}
 
   \indexspace
 
-  \item Packages, \hyperpage{41}
-  \item Pandas, \hyperpage{45}
+  \item Packages, \hyperpage{44}
+  \item Pandas, \hyperpage{49}
   \item Pi header, \hyperpage{26}
 
   \indexspace

@@ -1,13 +1,63 @@
 \chapter{Week 5: Data-analyse in Python}
 
 We hebben inmiddels een gedegen bassis kennis van \textit{Python} opgedaan gedurende dit vak. We hebben o.a. geleerd over loops, lijsten, functies en IO aansturing in \textit{Python}, en de vershillen gezien met \textit{C}. Een van de concepten die nog onbelicht is gebleven is het zogeheten 'object georiënteerd programmeren' (of \textit{OOP}).
-Omdat dit een van de belangrijkste en handigste concepten van het programmeren is van de afgelopen decenia, én omdat we stiekem er toch al flink mee gewerkt hebben, gaan we in dit hoofdstuk ook dit thema belichten. Daarnaast gaan we deze week aan de slag met \textit{packages}, handige software bibliotheken die de functionaliteit van onze \textit{Python} omgeving kunnen uitbreiden. 
+Omdat dit een van de belangrijkste en handigste concepten van het programmeren is van de afgelopen decenia, én omdat we stiekem er toch al flink mee gewerkt hebben, gaan we in dit hoofdstuk ook dit thema belichten. Daarnaast gaan we deze week aan de slag met \textit{packages}, handige software bibliotheken die de functionaliteit van onze \textit{Python} omgeving flink kunnen uitbreiden. 
 
 \section{Object georiënteerd programmeren}\index{Object georiënteerd programmeren}
+Zoals je wellicht al zou verwachten, focust het software design principe genaamd 'object georiënteerd programmeren', zich vooral op 'objecten'. Objecten bestaan uit variabelen en functies. Waarbij je de variabelen kunt zien als eigenschappen van het object en functies als gedrag ervan. Lekker abstract hè? \\
 
+Een voorbeeldje maakt het hopelijk wat duidelijker. Stel je voor: je wilt op een object georiënteerde manier naar een cirkel kijken. Allereerst ga je dan nadenken over welke eigenschappen jouw cirkel zou moeten hebben. Een cirkel heeft (in dit voorbeeld) maar één eigenschap: zijn straal. Dit wordt de variabele van ons cirkel-object, onthoud deze even. \\
+\newpage
+Daarnaast gaan we kijken naar het 'gedrag' van ons cirkel-object. Dat wil zeggen, we stellen ons de vraag, wat willen we allemaal met onze cirkel doen? Voor dit voorbeeld wil ik graag de oppervlakte en de omtrek van de cirkel makkelijk kunnen bepalen. Dit worden de twee functies van van ons object: 
+\begin{figure}[h!]
+\centering\includegraphics[scale=0.75]{Pictures/chapter07/cirkel.png}
+\caption{Ons cirkel-object heeft een straal, en kan (op basis daarvan) de omtrek en oppervlakte van zichzelf berekenen.} 
+\label{fig:cirkel} % Unique label used for referencing the figure in-text
+%\addcontentsline{toc}{figure}{Figure \ref{fig:webserver}} % Uncomment to add the figure to the table of contents
+\end{figure}
+
+In code kunnen we dat nu op de volgende manier hiervan een blauwdruk van onze cirkel vastleggen:
+
+\inputpython{code/chapter07/obj1.py}
+
+We kunnen hier wel even kort doorheen lopen, om het concept wat hier gemaakt is goed te snappen. Allereerst wordt uit de \pyth{math} bibliotheek \pyth{pi} geïmporteerd, zodat we kunnen rekeken met $\pi$. Daarna wordt het interessant want op regel $4$ maken we een klasse-definitie van we onze cirkel, via het woordje \pyth{class}. Dit kun je zien als een soort blauwdruk van ons object, zodat we die later kunnen gebruiken. De naam van onze \pyth{class} is \pyth{Cirkel}, want klasse-definities schrijf je altijd met een hoofdletter. \\
+
+Daarna is er op regel $5$ te zien dat we onze \pyth{Cirkel} een variabele \pyth{r} heeft, deze stelt de straal van de cirkel voor. En we hebben deze een standaard waarde $10$ gegeven. \\
+
+Op regel $7$ en $12$ worden twee functies gedefinieerd, zoals als het goed is bekend voor moet komen. Het enige dat er een beetje gek aan is, is dat argument \pyth{self}. En dit is ook een bijzonder maar erg nuttig ding. Hiermee kan je namelijk de klasse-variabelen benaderen. Dus als je iets wil doen met de straal van de cirkel, gebruik je in de functies \pyth{self.r} (in plaats van enkel \pyth{r}). Je hoeft die \pyth{self} allleen te typen bij defineren van de klasse-functies. Bij het aanroepen wordt dit argument automatisch door \textit{Python} gevuld en hoef je deze dus ook niet mee te geven dan. \\
+
+Laten we onze nieuwe klasse-definitie eens gebruiken. Sla het bovenstaande stukje code op als $cirkel.py$. Op deze manier kunnen we 'm nu importeren in een ander stukje code. Hieronder volgt een stukje code waarin onze \pyth{Cirkel} daadwerkelijk wordt gebruikt:
+
+\inputpython{code/chapter07/obj1_use.py}
+
+De bovenstaande code heeft deze uitvoer:
+\begin{python}
+Deze cirkel heeft een straal van: 10cm.
+En daarmee een omtrek van: 62.83cm.
+En heeft een oppervlakte van: 314.16cm^2.
+\end{python}
+
+Ook dit stukje code heeft wellicht een beetje uitleg nodig. Op de eerste regel importeren we ons bestand \pyth{cirkel} en uit dat bestand willen we onze klasse-definitie \pyth{Cirkel} gebruiken. Je kunt dus meerdere klasse-definities in een bestand zetten en je importeert alleen diegene die je wilt gebruiken. \\ 
+
+Op regel $4$ wordt (eindelijk) daadwerkelijk een object gemaakt van onze klasse-definitie. Het object heeft de naam \pyth{my_circle} en is dus van het type \pyth{Cirkel}. 
+
+\begin{remark} 
+Komt deze regel bekend voor? Toen ik eerder stelde dat we stiekem al vaker met object georiënteerd programmeren hebben gewerkt, is dit waar ik op doelde. \\
+Zo hebben bijv. een tijdje terug al op deze manier een \pyth{LED} en een \pyth{Button} aangemaakt (\pyth{led = LED(17)} en \pyth{btn = Button(2)}). De klasse-definities van deze stonden namelijk in de package \pyth{gpiozero}. Zelf bij de \textit{Arduino} gebruikten we dit soms op plekken bijv. \pyth{Serial.print();}
+\end{remark}
+
+Na het aanmaken van het object \pyth{my_circ}, kunnen we deze gebruiken en bijv. de functies die het heeft aanroepen. Dit gebeurt op regel $7 \& 8$. De waardes die de functies teruggeven worden opgeslagen in \pyth{omt} en \pyth{opp} en deze worden uiteindelijk in de laatste $3$ regels op een nette manier naar het scherm geschreven. 
+
+\subsection{Constructors}\index{Constructors}
+Het voordeel van object geörienteerd programmeren is dat de gemaakte objecten heel makkelijk herbruikbaar (en uitbreidbaar) zijn. Hierdoor is je code ook makkelijker te onderhouden en is er als het goed is een duidelijke structuur in je projecten terug te zien. \\
+In ons \pyth{Cirkel}-voorbeeldje is de herbruikbaarheid van de code nog niet zo duidelijk, omdat de cirkel in dit geval alijd een straal van $10$cm heeft. Je zou deze eigenlijk flexibel willen aanpassen naar je wensen. Dit kan heel mooi met een \textit{constructor}. Dit is namelijk de functie die wordt aangeroepen door \textit{Python} (dus automatisch) wanneer je een object aanmaakt, dus in dit geval bij \pyth{my_circle = Cirkel()}.
+
+
+\newpage
 
 \section{Packages}\index{Packages}
-Een \textit{Package} in \textit{Python} is een verzameling van modules. Deze modules kunnen we weer in onze code gebruiken door deze te importeren met \pyth{import}. We hbben er in middel al een aantal van gebruikt bijv.: \pyth{math, time, gpiozero, RPi}, maar deze worden allemaal standaard meegeleverd. Je kunt ze ook heel eenvoudig zelf toevoegen aan je \textit{Python} omgeving, door gebruik te maken van \pyth{pip}. Dit programma kun je aanroepen vanaf de terminal:
+Een \textit{Package} in \textit{Python} is een verzameling van modules. Deze modules kunnen we weer in onze code gebruiken door deze te importeren met \pyth{import}. We hbben er in middel al een aantal van gebruikt bijv.: \pyth{math, time, gpiozero, RPi}, maar deze worden allemaal al standaard meegeleverd op bijv. de \textit{Raspberry Pi}. Je kunt ze ook heel eenvoudig zelf toevoegen aan je \textit{Python} omgeving, door gebruik te maken van \pyth{pip}. Dit programma kun je aanroepen vanaf de terminal:
+
 \begin{lstlisting}[language=bash]
 python3 -m pip install <naam_package>
 \end{lstlisting}
@@ -53,7 +103,7 @@ Matplotlib is een verzameling aan tools voor het maken en bewerken van grafieken
   Installeer Matplotlib
 \end{exercise}
 
-Om het te gebruiken in z'n meest simpele vorm zorg je ervoor dat je een reeks $x$-waardes hebt, en een reeks bijbehorende $y$-waardes. Deze kun je dan plotten (het daadwerkelijk tekenen van de grafiek) en de resulterende grafiek kun je tonen op het scherm:
+Om het te gebruiken in z'n meest simpele vorm zorg je ervoor dat je een reeks $x$-waardes hebt, en een reeks bijbehorende $y$-waardes. Deze kun je dan plotten (het doorrekenen van alle data van de grafiek) en de resulterende grafiek kun je tonen op het scherm:
 
 \inputpython{code/chapter07/plot1.py}
 
@@ -105,6 +155,9 @@ De mogelijkheden van \textit{matplotlib} kunnen enorm uitgebreid worden in combi
 Installeer NumPy 
 \end{exercise}
 We kunnen met de combinatie \textit{NumPy} en \textit{matplotlib} bijv. elke wiskunde functie die we kunnen bedenken op een makkelijke en overzichtelijke wijze plotten. Superhandig voor je wiskunde huiswerk ;). Als voorbeeldje volgt hieronder een klein scriptje die $y = sin(x)$ plot op een bereik van $-\pi$ tot $\pi$:
+
+\newpage
+
 \inputpython{code/chapter07/plot_numpy.py}
 
 De bonenstaande code produceert onderstaande grafiek \ref{fig:plot3}:
@@ -115,10 +168,11 @@ De bonenstaande code produceert onderstaande grafiek \ref{fig:plot3}:
 %\addcontentsline{toc}{figure}{Figure \ref{fig:webserver}} % Uncomment to add the figure to the table of contents
 \end{figure}
 
-Op regel $5$ wordt hier een reeks aan getallen gegenereerd door de \pyth{np.arange()}-functie. Valt je op dat deze functie nagenoeg hetzelfde eruit ziet (en werkt!) als de ingebouwde \pyth{range()}-functie? Het verschil zit 'm in dat \pyth{np.arange()} ook komma-getallen (floats) kan genereren. \\ 
+Op regel $5$ wordt hier een reeks aan getallen gegenereerd door de \pyth{np.arange()}-functie. Valt je op dat deze functie nagenoeg hetzelfde eruit ziet (en werkt!) als de ingebouwde \pyth{range()}-functie? Het verschil zit 'm in dat \pyth{np.arange()} ook reeksen met komma-getallen (floats) kan genereren. \\ 
 Om een soortgelijke reden gebruiken we op regel $7$ \pyth{np.sin()} in plaats van \pyth{math.sin()}. De sinus functie uit \textit{NumPy} kan namelijk de sinus van een hele reeks getallen uitrekenen en dit weer teruggeven als een reeks getallen. De sinus-functie uit \pyth{math} kan enkel de sinus uitrekenen op $1$ getal per keer.
  
 % \subsection{pip}\index{pip}
+\newpage
 
 \section{Pandas}\index{Pandas}
 \begin{figure}[h!]
@@ -129,10 +183,10 @@ Om een soortgelijke reden gebruiken we op regel $7$ \pyth{np.sin()} in plaats va
 \end{figure}
 
 % \subsection{Excel file edit}\index{Excel file edit}
-Het tekenen van grafieken wordt een stuk intteressanter als je veel input data hebt. Die kun je bijvoorbeeld krijgen door een sensor periodiek te meten, maar ook door een spreadsheet in te laden. De package \textit{pandas} helpt je bij dat laatste enorm.
+Het tekenen van grafieken wordt een stuk intteressanter als je veel input data hebt. Die kun je bijvoorbeeld krijgen door een sensor periodiek te meten, maar ook door een spreadsheet in te laden. De package \textit{pandas} gaat je bij dat laatste flink helpen.
 
 \begin{exercise}
-Installeer de package \textit{Pandas} en z'n verschillende parser:
+Installeer de package \textit{Pandas} en z'n verschillende parsers:
 \begin{lstlisting}[language=bash]
 python3 -m pip install pandas odfpy openpyxl xlrd
 \end{lstlisting}
@@ -153,7 +207,7 @@ sudo apt-get install gnumeric
 \end{lstlisting}
 \end{exercise}
 
-Als voorbeeld heb ik de volgende spreadsheet aangemaakt: Een tabel met twee kolommen: 'Tijdstip' en 'Waarde', met elk $50$ rijen/waardes. 
+Als voorbeeld heb ik de volgende spreadsheet aangemaakt: Een tabel met twee kolommen: 'Tijdstip' en 'Waarde', met elk $50$ rijen/waardes: 
 \begin{figure}[h!]
 \centering\includegraphics[scale=0.7]{Pictures/chapter07/excel1.png}
 \caption{Voorbeeld spreadsheet gemaakt in Excel.}
@@ -161,11 +215,13 @@ Als voorbeeld heb ik de volgende spreadsheet aangemaakt: Een tabel met twee kolo
 %\addcontentsline{toc}{figure}{Figure \ref{fig:webserver}} % Uncomment to add the figure to the table of contents
 \end{figure}
 
+\newpage
+
 Deze spreedsheet is dan met \textit{pandas} als volgt heel eenvoudig in te laden:
 \inputpython{code/chapter07/exc1.py}
 
 \begin{remark}
-Heb je nu een spreadsheet met meerdere tabladen gemaakt en wil je een specifiek blad inladen met de naam 'Blad1'? Dat kan prima. Pas dan regel $5$ aan van de code naar: \\
+Heb je nu een spreadsheet met meerdere tabladen gemaakt en wil je een specifiek blad inladen met de naam 'Blad1'? Dat kan prima. Pas dan regel $4$ aan van de code naar: \\
 \pyth{df = pd.read_excel('excel1.xlsx', sheet_name='Blad1')}
 \end{remark}
 
@@ -175,11 +231,9 @@ Tijdstip
 Waardes
 \end{python}
 
-Deze namen kunnen we daarna gebruiken om de daadwerkelijke data te benaderen en bijvoorbeeld te pringten met \textit{matplotlib}:
+Deze namen kunnen we daarna gebruiken om de daadwerkelijke data te benaderen en bijvoorbeeld te printen met \textit{matplotlib}:
 
 \inputpython{code/chapter07/exc2.py}
-
-\newpage
 
 Dit bovenstaande stukje code levert uiteindelijk de volgende grafiek op:
 
@@ -202,8 +256,6 @@ Andersom kan natuurlijk ook: Je hebt data in je \textit{Python} script, en dat w
 
 \inputpython{code/chapter07/toexc.py}
 
-\newpage
-
 Het gegenereerde bestand kunnen we openen met ons spreadsheet-programma, en zal er dan zo uitzien:
 
 \begin{figure}[h!]
@@ -222,18 +274,24 @@ Op regel $8$ gebruiken we de \pyth{zip()}-functie. Ga na in de interpreter wat d
 \section{Opdrachten}\index{Opdrachten}
 \begin{exercise}
 Plot (in $1$ grafiek) met \textit{matplotlib} en \textit{NumPy} de functies: \\
-$y_{1}=\sin(2\cdot x)$ en $y_{2}=4\cdot\cos(4\cdot x)$ tussen $-2\pi$ en $2\pi$.\\
-Zorg ook voor een duidelijke legenda.
+$y_{1}=\sin(2\cdot x)$ en $y_{2}=4\cdot\cos(4\cdot x)$ tussen $-2\pi$ en $2\pi$. Zorg ook voor een duidelijke legenda.
 \end{exercise}
 
 \begin{exercise}
 \label{exc7:exc2}
-Vraag van de gebruiker steeds een nummer, net zolang tot deze 'klaar' intypt. 
-Voeg alle getallen die de gebruiker intypte steeds toe aan een lijst en print hier een nette grafiek van. (Begin voor de x-waardes te tellen bij $0$, en tel er steeds 1 bij op, voor elk ingevoerd getal).
+Vraag van de gebruiker steeds een nummer, net zolang tot deze 'klaar' intypt. \\
+Voeg alle getallen die de gebruiker intypte steeds toe aan een lijst en print hier (als de gebruiker klaar is) een nette grafiek van. (Begin voor de x-waardes te tellen bij $0$, en tel er steeds 1 bij op, voor elk ingevoerd getal).
 \end{exercise}
 
 \begin{exercise}
+\label{exc8:exc3}
 Breid het het programma van opdracht \ref{exc7:exc2} uit, zodat het programma ook een Excel sheet opslaat met alle ingevoerde cijfers.
+\end{exercise}
+
+\begin{exercise}
+Maak een eigen klasse 
+\ref{exc8:exc3}
+$\\$
 \end{exercise}
 
 \begin{exercise}
