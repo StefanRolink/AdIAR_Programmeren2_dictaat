@@ -21,9 +21,13 @@ Zowel de klasse=variabele \pyth{r}, als $2$ van de $3$ functies\footnote{Wellich
 
 \inputpython{code/chapter08/bol.py}
 
-Valt het je op hoe kort dit bestand is? Op regel $5$ gebeurt alle 'magie', hier wordt namelijk gesteld dat we een nieuwe klasse genaamd \pyth{Bol} willen maken, maar dat we deze willen baseren op \pyth{Cirkel}. \textit{Python} regelt nu onderwater dat de bol-klasse een klasse-variabele \pyth{r} voor de straal krijgt, en ook kan hij gebruik maken van de functies die in \pyth{Cirkel} zitten. \newline
+Valt het je op hoe kort dit bestand is? Op regel $5$ gebeurt alle 'magie', hier wordt namelijk gesteld dat we een nieuwe klasse genaamd \pyth{Bol} willen maken, maar dat we deze willen baseren op \pyth{Cirkel}. \textit{Python} regelt nu onderwater dat de bol-klasse een klasse-variabele \pyth{r} voor de straal krijgt, en ook kan hij gebruik maken van de functies (waaronder de constructor) die in \pyth{Cirkel} zitten. \newline
 
-Het enige wat wij zelf nog moeten doen is de nieuwe functie uitschrijven die de inhoudt van de bol berekend op basis van z'n straal, met de volgende formule: $O_{bol} = \frac{4}{3} \pi r^3$. \newline
+Het enige wat wij zelf nog moeten doen is de nieuwe functie uitschrijven die de inhoudt van de bol berekend op basis van z'n straal, met de volgende formule: $V_{bol} = \frac{4}{3} \pi r^3$. \newline
+
+\begin{remark}
+Een klasse basseren op een andere klasse noemen we ook wel een \textit{subklasse} maken. \pyth{Bol} is in dit geval een subklasse van \pyth{Cirkel}. Andersom is \pyth{Cirkel} de \textit{superklasse} van \pyth{Bol}.
+\end{remark}
 
 Deze klasse-definitie kunnen we daarna gebruiken in andere programma's op de bekende manier:
 \begin{python}
@@ -47,6 +51,17 @@ Oppervlakte: 314.16
 Inhoud: 4188.79
 \end{python}
 
+In onze \pyth{Bol} zit echter nog wel een bug, de oppervlakte van een bol, bereken je op een andere manier dan van een cirkel. Voor een cirkel geldt: $O_{cirkel} = \pi r^2$, voor een bol: $O_{bol} = 4\pi r^2$. \newline
+
+Gelukkig kunnen we in een subklasse functies van de superklasse makkelijk overschrijven:
+\inputpython{code/chapter08/bol2.py}
+
+Als we nu onze \pyth{Bol} gebruiken, zoals boven aan deze pagina, komen er wel de juiste waardes uit:
+\begin{python}
+Omtrek: 62.83
+Oppervlakte: 1256.64
+Inhoud: 4188.79
+\end{python}
 
 % \section{Protocollen}\index{Protocollen}
 % \subsection{UART}\index{UART}
