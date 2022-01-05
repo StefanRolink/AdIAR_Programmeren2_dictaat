@@ -1,9 +1,9 @@
 \chapter{Week 6: Arduino met Pi Koppelen}
 
-In deze laatste week van het Programmeren 2, gaan we ons eerst nog wat verder verdiepen in de wereld van object geörienteerd programmeren (OOP). Daarnaast stevenen we af op onze eindopdracht van dit vak (en eigenlijk ook van Programmeren 1).
+In deze laatste week van het vak Programmeren 2, gaan we ons eerst nog wat verder verdiepen in de wereld van object geörienteerd programmeren (OOP). Daarnaast stevenen we af op onze eindopdracht van dit vak.
 
 \section{Overerven}\index{Overerven}
-Met het vorige hoofdstuk heb je je eerste introductie gehad in de wereld van OOP. We hebben op een nieuwe abstracte manier naar problemen gekeken. Ook werd er toen verteld over de voordelen van OOP, zo kon je de code makkelijk onderhouden (je hoeft maar op $1$ plek de klasse-definitie/blauwdruk aan te passen, en overal waar je 'm gebruikt wordt deze verandering overgenomen). Maar ook werd er gesteld dat de gemaakte code eenvoudig uitbreidbaar is. Als we nu ons geheugen opfrissen door even te kijken naar de gemaakte \pyth{Cirkel}-klasse:
+Met het vorige hoofdstuk heb je je eerste introductie gehad in de wereld van OOP. We hebben op een nieuwe abstracte manier naar problemen gekeken. Ook werd er toen verteld over de voordelen van OOP, zo kon je de code makkelijk onderhouden (je hoeft maar op $1$ plek de klasse-definitie/blauwdruk aan te passen, en overal waar je 'm gebruikt wordt deze verandering overgenomen). Maar ook werd er gesteld dat de gemaakte code eenvoudig uitbreidbaar is, en op dat voordeel hebben we nog niet naar gekeken. Als we nu ons geheugen opfrissen door even te kijken naar de gemaakte \pyth{Cirkel}-klasse:
 
 \inputpython{code/chapter08/cirkel.py}
 
@@ -12,12 +12,12 @@ We hadden een klasse \pyth{Cirkel} gemaakt die als eigenschap z'n straal had, en
 Als we bijvoorbeeld een klasse willen maken voor een \pyth{Bol} en we gaan hiervoor beredeneren wat zijn eigenschappen en z'n functies zijn. Zul je zien dat deze veel zullen overeenkomen met die van de \pyth{Cirkel}. Qua eigenschappen kunnen we een bol definieren op basis van een straal en op basis van die straal kunnen we de omtrek, oppervlakte en inhoud van de bol berekenen. Grafisch weergegeven:
 \begin{figure}[h!]
 \centering\includegraphics[scale=0.7]{Pictures/chapter08/bol.png}
-\caption{Ons bol-object heeft een straal, en kan (op basis daarvan) de omtrek, oppervlakte en inhoud van zichzelf berekenen.}
+\caption{\small Ons bol-object heeft een straal, en kan (op basis daarvan) de omtrek, oppervlakte en inhoud van zichzelf berekenen.}
 \label{fig:bol} % Unique label used for referencing the figure in-text
 %\addcontentsline{toc}{figure}{Figure \ref{fig:webserver}} % Uncomment to add the figure to the table of contents
 \end{figure}
 
-Zowel de klasse=variabele \pyth{r}, als $2$ van de $3$ functies\footnote{Wellicht heb je 'm al door: de oppervlakte van een bol berekenen je op een andere manier dan van een cirkel, hier komen we later op terug} komen overeen met die van \pyth{Cirkel}. Als we dus een klasse-definitie voor een \pyth{Bol} willen maken is het handiger om te baseren op een \pyth{Cirkel} dan helemaal opnieuw te beginnen, dat scheelt werk! Onze klasse-definitie van een \pyth{Bol} ziet er dan zo uit:
+Zowel de klasse-variabele \pyth{r}, als $2$ van de $3$ functies\footnote{Wellicht heb je 'm al door: de oppervlakte van een bol berekenen je op een andere manier dan van een cirkel, hier komen we later op terug} komen overeen met die van \pyth{Cirkel}. Als we dus een klasse-definitie voor een \pyth{Bol} willen maken is het handiger om deze te baseren op \pyth{Cirkel} dan helemaal opnieuw te beginnen, dat scheelt werk! Onze klasse-definitie van een \pyth{Bol} ziet er dan zo uit:
 
 \inputpython{code/chapter08/bol.py}
 
@@ -26,7 +26,7 @@ Valt het je op hoe kort dit bestand is? Op regel $5$ gebeurt alle 'magie', hier 
 Het enige wat wij zelf nog moeten doen is de nieuwe functie uitschrijven die de inhoudt van de bol berekend op basis van z'n straal, met de volgende formule: $V_{bol} = \frac{4}{3} \pi r^3$. \newline
 
 \begin{remark}
-Een klasse basseren op een andere klasse noemen we ook wel een \textit{subklasse} maken. \pyth{Bol} is in dit geval een subklasse van \pyth{Cirkel}. Andersom is \pyth{Cirkel} de \textit{superklasse} van \pyth{Bol}.
+  Een klasse basseren op een andere klasse noemen we ook wel een \textit{subklasse} maken. \pyth{Bol} is in dit geval een \textit{subklasse} van \pyth{Cirkel}. Andersom is \pyth{Cirkel} de \textit{superklasse} van \pyth{Bol}.
 \end{remark}
 
 Deze klasse-definitie kunnen we daarna gebruiken in andere programma's op de bekende manier:
@@ -51,6 +51,10 @@ Oppervlakte: 314.16
 Inhoud: 4188.79
 \end{python}
 
+We maken hier een object genaamd \pyth{mijn_bol} aan, die van het type \pyth{Bol} is. Doordat onze Bol klasse-definitie geen constructor heeft, wordt de constructor van z'n superklasse aangeroepen: die van \pyth{Cirkel}. Daarna worden de functies \pyth{bereken_omtrek()} en \pyth{bereken_oppervlakte()} aangeroepen. Deze zijn ook niet te vinden in de \pyth{Bol} klasse-definitie, dus worden die van \pyth{Cirkel} hier uitgevoerd. De laatste functie \pyth{bereken_inhoud()} is wel te vinden in \pyth{Bol}, dus die wordt aangeroepen zoal we gewend zijn. \newline
+
+Python zoekt dus eerst in de klasse-definitie van een subklasse naar klasse-variabelen en functies, en als ze daar niet te vinden zijn kijkt hij naar de superklasse ervan. (zijn ze daar ook niet vinden, dan krijg je een \pyth{AttributeError} ;) ). \newline
+
 In onze \pyth{Bol} zit echter nog wel een bug, de oppervlakte van een bol, bereken je op een andere manier dan van een cirkel. Voor een cirkel geldt: $O_{cirkel} = \pi r^2$, voor een bol: $O_{bol} = 4\pi r^2$. \newline
 
 Gelukkig kunnen we in een subklasse functies van de superklasse makkelijk overschrijven:
@@ -62,6 +66,58 @@ Omtrek: 62.83
 Oppervlakte: 1256.64
 Inhoud: 4188.79
 \end{python}
+
+In dit geval zoekt Python eerst naar de functie \pyth{bereken_oppervlakte()} in \pyth{Bol}, en vindt 'm daar al, hij zoekt dan niet meer verder. Op deze manier kun je dus functies 'vervangen' van de superklasse in de subklasse. \newline \newline
+
+We doen nog een voorbeeldje. Want we kunnen het overerven ook andersom benaderen. Stel je voor je wil op een OOP manier een kat, een hond en een koe beschrijven. In dit voorbeeld heeft elk dier een aantal variabelen en een aantal functies: 
+
+\begin{figure}[h!]
+\centering\includegraphics[scale=0.5]{Pictures/chapter08/animals.png}
+  \caption{\small Elk dier (kat, hond en koe) heeft z'n eigen eigenschap en functies.} 
+\label{fig:animals} % Unique label used for referencing the figure in-text
+%\addcontentsline{toc}{figure}{Figure \ref{fig:webserver}} % Uncomment to add the figure to the table of contents
+\end{figure}
+
+Deze zou je nu los van elkaar gaan uit kunnen werken in code, maar je kunt ook eerst kijken naar de overeenkomsten. Deze overeenkomsten zou je namelijk kunnen verzamelen in een basis superklasse (bijv. 'dier') , waarop je de andere dieren op basseert. \newline
+
+\begin{figure}[h!]
+\centering\includegraphics[scale=0.5]{Pictures/chapter08/animals_inh.png}
+  \caption{\small Elk dier (kat, hond en koe) heeft z'n eigen eigenschap en functies, maar ook veel overeenkomsten met de basisklasse.} 
+\label{fig:animals2} % Unique label used for referencing the figure in-text
+%\addcontentsline{toc}{figure}{Figure \ref{fig:webserver}} % Uncomment to add the figure to the table of contents
+\end{figure}
+
+Laten we dit eens uit gaan werken in code. In de klasse-definitie van het basis-Dier (\textit{dier.py}), vinden we dus de \pyth{naam}, de \pyth{kleur} en het \pyth{geluid} dat het dier maakt. Ook zit hierin een functie \pyth{maak_geluid()} die het geluid van het dier op het scherm print:
+
+\newpage
+
+\inputpython{code/chapter08/dier.py}
+In de overige dieren hoeven we dus alleen de functies en variabelen uit te werken die niet in de superklasse \pyth{Dier} zitten. Voor het gemak hebben we ze alledrie in hetzelfde bestand gezet: 
+\inputpython{code/chapter08/dieren.py}
+
+In de constructor van elk dier gebeurt nog iets bijzonders. Hier wordt namelijk met de hand de constructor van de superklasse \pyth{Dier} aangeroepen. Op deze manier worden alle klasse-variabelen met de goede waarde gezet. Nu kunnen we onze gemaakte dieren gebruiken:
+\inputpython{code/chapter08/dieren_use.py}
+De uitvoer laat zich raden (met toegevoegde witregels):
+\begin{python}
+Miauw!
+Waf woef!
+Mmmmmmboe!
+
+Purrrrrr...
+
+Bal! Bal! Bal!
+
+Eerst gras eten..
+Om nom nom
+Hier, alsjeblieft: 1 melk!
+\end{python}
+
+\begin{remark}
+  Wat nu als we een functie proberen uit te voeren van een ander dier? \newline 
+  Bijv.: \pyth{bertha7.spin()}. Dan krijg je een error: \newline
+  \pyth{AttributeError: 'Koe' object has no attribute 'spin'}.
+  De klasses die afgeleid zijn van een superklasse hebben geen weet van andere afgeleide klasses.
+\end{remark}
 
 % \section{Protocollen}\index{Protocollen}
 % \subsection{UART}\index{UART}
