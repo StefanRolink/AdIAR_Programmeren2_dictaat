@@ -115,13 +115,187 @@ Hier, alsjeblieft: 1 melk!
 \begin{remark}
   Wat nu als we een functie proberen uit te voeren van een ander dier? \newline 
   Bijv.: \pyth{bertha7.spin()}. Dan krijg je een error: \newline
-  \pyth{AttributeError: 'Koe' object has no attribute 'spin'}.
+  \pyth{AttributeError: 'Koe' object has no attribute 'spin'}.\newline
   De klasses die afgeleid zijn van een superklasse hebben geen weet van andere afgeleide klasses.
 \end{remark}
 
-% \section{Protocollen}\index{Protocollen}
-% \subsection{UART}\index{UART}
-% \subsection{HTTP}\index{HTTP}
+\newpage
+
+\section{Protocollen}\index{Protocollen}
+Genoeg over abstracte concepten als OOP gehad. Tijd om eens te gaan verdiepen in hoe we onze Raspberry Pi en onze Arduino met elkaar kunnen laten communiciëren. Dit kan op verschillende manieren, beide hebben een vrij uiteenlopend scala aan communicatie mogelijkheden aan boord. We gaan in dit vak aan de slag met twee: via de seriële poort (ook wel: UART) en via Ethernet.
+
+\subsection{UART}\index{UART}
+Communicatie via UART of seriële poort wordt op de beide bordjes geregeld door de usb-poort. Je kunt ook bepaalde pinnen op de headers gebruiken, maar gemakshalve blijven we in dit hoofdstuk bij de usb-poorten.
+
+\begin{figure}[h!]
+\centering\includegraphics[scale=0.5]{Pictures/chapter08/usb.png}
+  \caption{\small De \textit{Raspberry Pi} gekoppeld aan de \textit{Arduino} met een USB kabel.} 
+\label{fig:usb} % Unique label used for referencing the figure in-text
+%\addcontentsline{toc}{figure}{Figure \ref{fig:webserver}} % Uncomment to add the figure to the table of contents
+\end{figure}
+
+\begin{exercise}
+  Sluit de \textit{Arduino} via USB aan op de \textit{Raspberry Pi}.
+\end{exercise}
+Onder Windows is de seriële poort, zoals je weet, te vinden als COM\textit{X}, waarbij \textit{X} een letter is (\textit{COM1}, \textit{COM5}, etc.). Omdat er op onze \textit{Raspberry Pi} een Linuxvariant (Raspberry Pi OS) draait, is het verstandig om even stil te staan bij hoe de seriële poort daar werkt.\newline
+
+\newpage 
+
+\subsection{Seriële poort in Linux}
+Linux zit nogal anders in elkaar dan Windows. De menubalk die ineens bovenin zit, is het eerste wat in het oog schiet, maar dat is slechts het topje van de ijsberg. Wellicht heb je wel eens een file-explorer gestart, en dan zag het volgende: 
+\begin{figure}[h!]
+\centering\includegraphics[scale=0.35]{Pictures/chapter08/home_folder.png}
+  \caption{\small De home folder map met de bekende folders} 
+\label{fig:home_folder} % Unique label used for referencing the figure in-text
+%\addcontentsline{toc}{figure}{Figure \ref{fig:webserver}} % Uncomment to add the figure to the table of contents
+\end{figure}
+
+Dat komt waarschijnlijk redelijk bekend voor, de \textit{home} folder (voor de gebruiker \textit{pi}) lijkt nog redelijk op de folder \textit{Mijn Documenten} op Windows. Maar ga nu eens twee mapjes hoger. Je kom nu uit bij de zogeheten \textit{root-folder}, aangegeven met: '\textit{/}'. Deze is vergelijkbaar met de \textit{C:} schijf onder Windows. 
+Waarschijnlijk vraag je je af wat dit allemaal voor vreemde folder zijn, en waar zit dan bijv. Linux geïnstalleerd er is namelijk geen '\textit{/linux}'-folder (zoals er onder windows wel een '\textit{C:\textbackslash Windows}'-folder is). Tja, dat is dus compleet anders hier. We gaan er niet te diep op in (want dat is een vak an sich), maar een beetje kennis ervan is wel handig als je hardware wil aansturen/uitlezen zoals de seriële poort.\newline
+
+Onder Linux is 'alles een bestand'. Dus niet alleen je je standaard tekst-bestanden, plaatjes, video's etc. maar alles. Dus bijv. alle programma's die je draait zijn te vinden onder de '\textit{/proc}'-folder (het tooltje \textit{top} en \textit{htop} halen bijv. hier al hun informatie weg). Informatie over de computer zelf (zoals het aanwezige geheugen en de CPU) kun je vinden in \textit{/sys}. En alle aangesloten hardware zijn te vinden onder \textit{/dev} (van devices). 
+
+Bijv. je harde schijf zit hier (in het geval van de Pi, als \textit{/dev/mmcblk0}). Heb je een muis aangesloten? Dan is die te vinden hier als \textit{/dev/input/mouse0}. De aangesloten \textit{Arduino} is hier ook te vinden. De vraag is alleen welk bestand moet ik hiervoor hebben? \newline
+
+Het handige daarvoor is om de \textit{Arduino} even los te koppelen en een terminal te openen op de \textit{Pi}. Typ nu het volgende in:
+\begin{lstlisting}[language=bash]
+ls /dev/tty*
+\end{lstlisting}
+Dit geeft een (flinke) lijst met apparaten. Sluit nu de \textit{Arduino} weer aan en voer de bovenstaande regel opnieuw uit. Het apparaat wat er nu bij gekomen is, is de \textit{Arduino}. Onthou deze.
+
+\begin{remark}
+  De \textit{Arduino} zal waarschijnlijk zitten op \textit{/dev/ttyUSB0} of \textit{/dev/ttyACM0}.
+\end{remark}
+
+\newpage 
+
+\subsubsection{Arduino code: Schrijven naar seriële poort}
+Om de seriële poort uit te lezen zijn is het natuurlijk wel handig dat de \textit{Arduino} daar iets mee doet. We maken even snel een klein programmaatje op de Arduino die precies dat doet en laden dat erop:
+\begin{lstlisting}[language=Arduino, basicstyle=\ttfamily\footnotesize]
+void setup() 
+{
+  Serial.begin(9600);
+}
+
+void loop() 
+{
+  Serial.println("Hallo vanaf Arduino!");
+  delay(1000); // Wacht een seconde.
+}
+\end{lstlisting}
+\begin{exercise}
+  Laad het bovenstaande programma op je \textit{Arduino}. Je kunt 'm ook gewoon programmeren op de \textit{Pi} door daar de Arduino-IDE te gebruiken. Is hij toch nog niet geïnstalleerd? Dan:
+  \begin{lstlisting}[language=bash]
+  sudo apt install arduino
+  \end{lstlisting}
+\end{exercise}
+
+\subsection{PySerial}
+
+\begin{figure}[h!]
+\centering\includegraphics[scale=0.75]{Pictures/chapter08/pyserial.png}
+\label{fig:pyserial} % Unique label used for referencing the figure in-text
+%\addcontentsline{toc}{figure}{Figure \ref{fig:webserver}} % Uncomment to add the figure to the table of contents
+\end{figure}
+
+Tijd om te kijken of we de data die nu gestuurd wordt door de \textit{Arduino} kunnen lezen met de \textit{Pi} via \textit{Python}. Dit gaan we doen met een handige package genaamd \textit{PySerial}. 
+
+\begin{remark}
+  Als het goed is, is deze package standaard geïnstalleerd op de \textit{Pi}, zoniet dan even onderstaande uitvoeren in een terminal:
+  \begin{lstlisting}[language=bash]
+    python3 -m pip install pyserial
+  \end{lstlisting}
+\end{remark}
+
+Onderstaande stuk code is alles wat we hiervoor nodig hebben:
+\inputpython{code/chapter08/arduino_serial.py}
+
+We maken hierin een object genaamd \pyth{ser} aan, van het type \pyth{serial.Serial}. Dit object handeld alle communicatie af met de daadwerkelijke seriële poort. We moeten 'm alleen even vertellen met welke poort en met welke snelheid we willen praten.
+Voordat dat we iets met de poort doen moeten we even wachten. \newline 
+Door een wellicht wat onhandige ontwerpkeuze start de \textit{Arduino} opnieuw op als je de seriële poort opent. Hier is weinig aan te doen, als je hier niet wacht kan het zijn dat je een aantal berichten mis loopt, doordat de \textit{Arduino} nog aan het opstarten is terwijl jij al berichten verwacht. Daarna lezen we de poort $10$ keer uit en schrijven wat we terugkrijgen naar het scherm. Hetgeen wat we uitlezen is nog geen \pyth{str}, maar een \pyth{bytearray}, vandaar dat we de gelezen data nog even moeten omzetten. \newline
+
+Het keyword \pyth{with} is hier nieuw. We kunnen het programma ook schrijven zonder:
+\inputpython{code/chapter08/arduino_serial2.py}
+Maar in dat geval moeten we als we klaar zijn met de poort, de functie \pyth{close()} aanroepen zodat de poort netjes wordt afgesloten. Met \pyth{with} gebeurt dit automatisch als het programma ermee klaar is. Het is aan te bevelen om het via \pyth{with} te doen. \newline
+
+Als we deze code uitvoeren zullen we $10$ keer worden begroet door onze \textit{Arduino}, sympathiek!
+\begin{python}
+0: Hallo vanaf Arduino!
+1: Hallo vanaf Arduino!
+2: Hallo vanaf Arduino!
+3: Hallo vanaf Arduino!
+4: Hallo vanaf Arduino!
+5: Hallo vanaf Arduino!
+6: Hallo vanaf Arduino!
+7: Hallo vanaf Arduino!
+8: Hallo vanaf Arduino!
+9: Hallo vanaf Arduino!
+\end{python}
+
+\subsubsection{Arduino code: Lezen seriële poort}
+
+Nu het uitlezen van data vanaf de \textit{Arduino} gelukt, gaan we ons inleren hoe we het de communicatie de andere kant op moeten zetten. Hiervoor zijn we een Arduino code nodig die data op de seriële poort inleest, en hier iets mee doet. In het volgende voorbeeld checkt ons programma of er een $1$ of een $0$ binnen komt, en zet op basis daarvan een Led (aangesloten op pin $d13$) aan of uit. 
+
+\newpage 
+
+\begin{lstlisting}[language=Arduino, basicstyle=\ttfamily\footnotesize]
+const int led_pin = 13;             // Led, aangesloten op d13
+
+void setup() 
+{
+  Serial.begin(9600);
+  pinMode(led_pin, OUTPUT);
+}
+
+void loop() 
+{
+  // Als er data is:
+  if(Serial.available() > 0)
+  {
+    // Lees deze in:
+    char data = Serial.read();
+    if(data == '1')
+    {
+      digitalWrite(led_pin, HIGH);  // Doe led aan bij een '1'
+    }
+    else if(data == '0')
+    {
+      digitalWrite(led_pin, LOW);   // Doe led uit bij een '0'
+    }
+  }
+}
+\end{lstlisting}
+
+Op de \textit{Pi} draaien we de volgende code, die eerst een $1$ stuurt en een seconde later een $0$:
+\inputpython{code/chapter08/arduino_serial_write.py}
+An sich is deze code redelijk recht-toe-recht-aan. Maar een belangrijk detail moet je zeker niet over het hoofd zien, op regel $7$ en $13$ sturen we de $1$ en $0$. Maar dit is geen standaard \pyth{str}, maar een \pyth{bytearray}. Intern werkt \textit{PySerial} enkel met \pyth{bytearray}. Dus je strings moet je even omzetten voor je ze verstuurd of ontvangt. Dit kan door er een \pyth{b} voor te zetten, of door de functie \pyth{encode()} aan te roepen op je string.\newline
+De ontvangen data moet je dus ook even opmaken (omzetten van \pyth{bytearray} naar \pyth{str} via \pyth{decode()} en newline verwijderen met \pyth{strip()}). Dit kan direct bij het lezen (regel $14$), maar ook gerust bij het printen (regel $8$). Van de \textit{Arduino} krijgen we de volgende info terug:
+\begin{python}
+Ontvangen: Led on!
+Ontvangen: Led off!
+\end{python}
+
+\newpage
+
+\subsubsection{OOP variant}
+Wat nu als we onze eerder opgedane kennis van OOP toe gaan passen op onze \textit{Arduino} communicatie. Dan moeten we eerst weer de standaardvragen stellen. Welke eigenschappen/variabelen heeft onze \textit{Arduino}? En welke functionaliteit moet hij bezitten. \newline
+De arduino moet kunnen communiceren met een seriële poort, dus daar is hij een \pyth{Serial}-object voor nodig. 
+
+\inputpython{code/chapter08/arduino_serial_oop.py}
+\begin{python}
+my_arduino = Arduino('/dev/ACM0', 9600)
+data = my_arduino.send_and_read_data('1')
+print(f'Ontvangen: {data}')
+
+sleep(1)  # Even wachten
+
+data = my_arduino.send_and_read_data('0')
+print(f'Ontvangen: {data}')
+\end{python}
+
+\newpage
+
+\subsection{Ethernet}\index{Ethernet}
 % \subsection{MQTT?}\index{MQTT?}
 
 % \begin{figure}[h!]

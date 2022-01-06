@@ -9,6 +9,7 @@
   \indexspace
 
   \item Editor, \hyperpage{18}, \hyperpage{25}
+  \item Ethernet, \hyperpage{69}
   \item Ethernet Shield, \hyperpage{7}
 
   \indexspace
@@ -57,9 +58,14 @@
   \item Packages, \hyperpage{47}
   \item Pandas, \hyperpage{52}
   \item Pi header, \hyperpage{26}
+  \item Protocollen, \hyperpage{63}
 
   \indexspace
 
   \item Try ... Except, \hyperpage{34}
+
+  \indexspace
+
+  \item UART, \hyperpage{63}
 
 \end{theindex}
