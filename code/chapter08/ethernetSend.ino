@@ -12,7 +12,7 @@ void setup()
 
 void loop() 
 {
-  EthernetClient client = server.available();   
+  EthernetClient client = server.available();
 
   if(client)                                    // Wacht op een nieuwe client
   {

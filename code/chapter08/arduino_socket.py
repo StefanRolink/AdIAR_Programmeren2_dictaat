@@ -1,15 +1,15 @@
 import socket
 
 class ArduinoSocket:
-    socket  = None
-        
+    socket = None
+
     def __init__(self, address, port):
         self.socket = socket.socket()         # Maak socket object aan
         self.socket.connect((address, port))  # Open connectie
 
     def send(self, msg):
-        self.socket.send(msg)
-        
+        self.socket.send(msg.encode())        # Zet om naar bytes en verstuur
+
     def receive(self, msg='Ja! toe maar'):
         # Om de connectie op te zetten, moeten we tenminste iets sturen:
         self.socket.send(msg.encode())

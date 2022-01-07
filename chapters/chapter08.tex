@@ -368,23 +368,38 @@ Daarna wordt er een beetje een truc toegepast. Normaal zou via dit soort verbind
 En dat is wat er daarna gebeurt, we lezen $10$ keer een regel uit ons (virtuele) bestand \pyth{f} en schrijven die naar het scherm. Waar we de vriendelijke begroeting van onze \textit{Arduino} zullen zien. 
 
 \subsubsection{OOP variant}
+Ook de communicatie die verloopt met de \textit{Arduino} via het Ethernet kunnen we prima benaderen op een object georiënteerde manier. Als we weer nagaan wat de eigenschappen en functies zijn die nodig zijn. We willen op z'n minst iets versturen en iets ontvangen met de \textit{Arduino}, en daarvoor zijn we een \pyth{socket}-object nodig, met een IP adres en een poort nummer. Oftewel:
 
+\begin{figure}[h!]
+\centering\includegraphics[scale=0.7]{Pictures/chapter08/socket_oop.png}
+\label{fig:socket_oop} % Unique label used for referencing the figure in-text
+%\addcontentsline{toc}{figure}{Figure \ref{fig:webserver}} % Uncomment to add the figure to the table of contents
+\end{figure}
+
+\newpage
+
+Als we dit weer uitwerken in een klasse-definitie krijgen we het volgende:
 \inputpython{code/chapter08/arduino_socket.py}
+In de constructor zorgen we ervoor dat er een \pyth{socket}-object wordt aangemaakt op basis van het meegegeven IP adres en de poortnummer. Daarna wordt de connectie gestart. De functies \pyth{send()} en \pyth{receive()} spreken voor zich. \newline
+In plaats van een mooie destructor, hebben hier een normale \pyth{close()}-functie. Dit komt omdat streams (wat dit soort dit soort communicaties zijn), niet makkelijk afgerond kunnen worden in de destructor zoals we bij de seriële poort deden. Het gaat voorbij de scope van dit vak om daar helemaal in te duiken, maar voor nu gaan we er vanuit dat we in deze implementatie zelf even de connectie moeten sluiten. \newline
 
+Deze \pyth{arduino_socket}-klassse kunnen we daarna op dze manier gebruiken:
 \begin{python}
-from arduno_socket import ArduinoSocket
+from arduino_socket import ArduinoSocket
 
+# Open connectie met Arduino:
 mijn_arduino = ArduinoSocket('192.168.1.3', 23)
 
+# Haal 10 keer een bericht op:
 for i in range(10):
     data = mijn_arduino.receive()
     print(f'{i}: {data}')
 
-mijn_arduino.send('bla bla bla')
-
+# Sluit na afloop de connectie:
 mijn_arduino.close()
 \end{python}
 
+En daarmee zijn we aan het eind gekomen van de theorie van dit vak. Hopelijk voelen jullie je nu een behoorlijke hacker en kunnen jullie met deze abstracte manieren om problemen op te lossen uit de voeten en daarmee mooie dingen gaan maken!
 % \subsection{MQTT?}\index{MQTT?}
 
 % \begin{figure}[h!]
@@ -396,38 +411,39 @@ mijn_arduino.close()
 %
 
 
-% \newpage
+\newpage
 
-% \section{Opdrachten}\index{Opdrachten}
-% \begin{exercise}
-% $\\$
-% \end{exercise}
+\section{Huiswerkopdrachten}\index{Huiswerkopdrachten}
 
-% \begin{exercise}
-% $\\$
-% \end{exercise}
+\begin{exercise}
+$\\$
+\end{exercise}
 
-% \begin{exercise}
-% $\\$
-% \end{exercise}
+\begin{exercise}
+$\\$
+\end{exercise}
 
-% \begin{exercise}
-% $\\$
-% \end{exercise}
+\begin{exercise}
+$\\$
+\end{exercise}
 
-% \begin{exercise}
-% $\\$
-% \end{exercise}
+\begin{exercise}
+$\\$
+\end{exercise}
 
-% \begin{exercise}
-% $\\$
-% \end{exercise}
+\begin{exercise}
+$\\$
+\end{exercise}
 
-% \begin{exercise}
-% $\\$
-% \end{exercise}
+\begin{exercise}
+$\\$
+\end{exercise}
 
-% \begin{exercise}
-% $\\$
-% \end{exercise}
+\begin{exercise}
+$\\$
+\end{exercise}
+
+\begin{exercise}
+$\\$
+\end{exercise}
 
