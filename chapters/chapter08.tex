@@ -3,7 +3,7 @@
 In deze laatste week van het vak Programmeren 2, gaan we ons eerst nog wat verder verdiepen in de wereld van object geörienteerd programmeren (OOP). Daarnaast stevenen we af op onze eindopdracht van dit vak.
 
 \section{Overerven}\index{Overerven}
-Met het vorige hoofdstuk heb je je eerste introductie gehad in de wereld van OOP. We hebben op een nieuwe abstracte manier naar problemen gekeken. Ook werd er toen verteld over de voordelen van OOP, zo kon je de code makkelijk onderhouden (je hoeft maar op $1$ plek de klasse-definitie/blauwdruk aan te passen, en overal waar je 'm gebruikt wordt deze verandering overgenomen). Maar ook werd er gesteld dat de gemaakte code eenvoudig uitbreidbaar is, en op dat voordeel hebben we nog niet naar gekeken. Als we nu ons geheugen opfrissen door even te kijken naar de gemaakte \pyth{Cirkel}-klasse:
+Met het vorige hoofdstuk heb je eerste introductie gehad in de wereld van OOP. We hebben op een nieuwe abstracte manier naar problemen gekeken. Ook werd er toen verteld over de voordelen van OOP, zo kon je de code makkelijk onderhouden (je hoeft maar op $1$ plek de klasse-definitie/blauwdruk aan te passen, en overal waar je 'm gebruikt wordt deze verandering overgenomen). Maar ook werd er gesteld dat de gemaakte code eenvoudig uitbreidbaar is, en op dat voordeel hebben we nog niet naar gekeken. Als we nu ons geheugen opfrissen door even te kijken naar de gemaakte \pyth{Cirkel}-klasse:
 
 \inputpython{code/chapter08/cirkel.py}
 
@@ -153,7 +153,7 @@ Linux zit nogal anders in elkaar dan Windows. De menubalk die ineens bovenin zit
 Dat komt waarschijnlijk redelijk bekend voor, de \textit{home} folder (voor de gebruiker \textit{pi}) lijkt nog redelijk op de folder \textit{Mijn Documenten} op Windows. Maar ga nu eens twee mapjes hoger. Je kom nu uit bij de zogeheten \textit{root-folder}, aangegeven met: '\textit{/}'. Deze is vergelijkbaar met de \textit{C:} schijf onder Windows. 
 Waarschijnlijk vraag je je af wat dit allemaal voor vreemde folder zijn, en waar zit dan bijv. Linux geïnstalleerd er is namelijk geen '\textit{/linux}'-folder (zoals er onder windows wel een '\textit{C:\textbackslash Windows}'-folder is). Tja, dat is dus compleet anders hier. We gaan er niet te diep op in (want dat is een vak an sich), maar een beetje kennis ervan is wel handig als je hardware wil aansturen/uitlezen zoals de seriële poort.\newline
 
-Onder Linux is 'alles een bestand'. Dus niet alleen je je standaard tekst-bestanden, plaatjes, video's etc. maar alles. Dus bijv. alle programma's die je draait zijn te vinden onder de '\textit{/proc}'-folder (het tooltje \textit{top} en \textit{htop} halen bijv. hier al hun informatie weg). Informatie over de computer zelf (zoals het aanwezige geheugen en de CPU) kun je vinden in \textit{/sys}. En alle aangesloten hardware zijn te vinden onder \textit{/dev} (van devices). 
+Onder Linux is 'alles een bestand'. Dus niet alleen je standaard tekst-bestanden, plaatjes, video's etc. maar alles. Dus bijv. alle programma's die je draait zijn te vinden onder de '\textit{/proc}'-folder (het tooltje \textit{top} en \textit{htop} halen bijv. hier al hun informatie weg). Informatie over de computer zelf (zoals het aanwezige geheugen en de CPU) kun je vinden in \textit{/sys}. En alle aangesloten hardware zijn te vinden onder \textit{/dev} (van devices). 
 
 Bijv. je harde schijf zit hier (in het geval van de Pi, als \textit{/dev/mmcblk0}). Heb je een muis aangesloten? Dan is die te vinden hier als \textit{/dev/input/mouse0}. De aangesloten \textit{Arduino} is hier ook te vinden. De vraag is alleen welk bestand moet ik hiervoor hebben? \newline
 
@@ -169,9 +169,9 @@ Dit geeft een (flinke) lijst met apparaten. Sluit nu de \textit{Arduino} weer aa
 
 \newpage 
 
-\subsubsection{Arduino code: Schrijven naar seriële poort}
+% \subsubsection{Arduino code: Schrijven naar seriële poort}
 Om de seriële poort uit te lezen zijn is het natuurlijk wel handig dat de \textit{Arduino} daar iets mee doet. We maken even snel een klein programmaatje op de Arduino die precies dat doet en laden dat erop:
-\begin{lstlisting}[language=Arduino, basicstyle=\ttfamily\footnotesize]
+\begin{lstlisting}[language=Arduino]
 void setup() 
 {
   Serial.begin(9600);
@@ -201,7 +201,7 @@ void loop()
 Tijd om te kijken of we de data die nu gestuurd wordt door de \textit{Arduino} kunnen lezen met de \textit{Pi} via \textit{Python}. Dit gaan we doen met een handige package genaamd \textit{PySerial}. 
 
 \begin{remark}
-  Als het goed is, is deze package standaard geïnstalleerd op de \textit{Pi}, zoniet dan even onderstaande uitvoeren in een terminal:
+  Als het goed is, is deze package standaard geïnstalleerd op de \textit{Pi}, zoniet (of als je 'm ook graag op je pc hebben) dan even onderstaande uitvoeren in een terminal:
   \begin{lstlisting}[language=bash]
     python3 -m pip install pyserial
   \end{lstlisting}
@@ -212,7 +212,7 @@ Onderstaande stuk code is alles wat we hiervoor nodig hebben:
 
 We maken hierin een object genaamd \pyth{ser} aan, van het type \pyth{serial.Serial}. Dit object handeld alle communicatie af met de daadwerkelijke seriële poort. We moeten 'm alleen even vertellen met welke poort en met welke snelheid we willen praten.
 Voordat dat we iets met de poort doen moeten we even wachten. \newline 
-Door een wellicht wat onhandige ontwerpkeuze start de \textit{Arduino} opnieuw op als je de seriële poort opent. Hier is weinig aan te doen, als je hier niet wacht kan het zijn dat je een aantal berichten mis loopt, doordat de \textit{Arduino} nog aan het opstarten is terwijl jij al berichten verwacht. Daarna lezen we de poort $10$ keer uit en schrijven wat we terugkrijgen naar het scherm. Hetgeen wat we uitlezen is nog geen \pyth{str}, maar een \pyth{bytearray}, vandaar dat we de gelezen data nog even moeten omzetten. \newline
+Door een wellicht wat onhandige ontwerpkeuze start de \textit{Arduino} opnieuw op als je de seriële poort opent. Hier is weinig aan te doen, als je hier niet wacht kan het zijn dat je een aantal berichten mis loopt, doordat de \textit{Arduino} nog aan het opstarten is terwijl jij al berichten verwacht. Daarna lezen we de poort $10$ keer uit en schrijven wat we terugkrijgen naar het scherm. Hetgeen wat we uitlezen is nog geen \pyth{str}, maar \pyth{bytes}, vandaar dat we de gelezen data nog even moeten omzetten. \newline
 
 Het keyword \pyth{with} is hier nieuw. We kunnen het programma ook schrijven zonder:
 \inputpython{code/chapter08/arduino_serial2.py}
@@ -232,13 +232,13 @@ Als we deze code uitvoeren zullen we $10$ keer worden begroet door onze \textit{
 9: Hallo vanaf Arduino!
 \end{python}
 
-\subsubsection{Arduino code: Lezen seriële poort}
+% \subsubsection{Arduino code: Lezen seriële poort}
 
-Nu het uitlezen van data vanaf de \textit{Arduino} gelukt, gaan we ons inleren hoe we het de communicatie de andere kant op moeten zetten. Hiervoor zijn we een Arduino code nodig die data op de seriële poort inleest, en hier iets mee doet. In het volgende voorbeeld checkt ons programma of er een $1$ of een $0$ binnen komt, en zet op basis daarvan een Led (aangesloten op pin $d13$) aan of uit. 
+Nu het uitlezen van data vanaf de \textit{Arduino} is gelukt, gaan we ons inleren hoe we het de communicatie de andere kant op kunnen opzetten. Hiervoor zijn we een Arduino programma nodig die data op de seriële poort inleest, en hier iets mee doet. In het volgende voorbeeld checkt ons programma of er een $1$ of een $0$ binnen komt, en zet op basis daarvan een Led (aangesloten op pin $d13$) aan of uit. 
 
 \newpage 
 
-\begin{lstlisting}[language=Arduino, basicstyle=\ttfamily\footnotesize]
+\begin{lstlisting}[language=Arduino]
 const int led_pin = 13;             // Led, aangesloten op d13
 
 void setup() 
@@ -266,10 +266,10 @@ void loop()
 }
 \end{lstlisting}
 
-Op de \textit{Pi} draaien we de volgende code, die eerst een $1$ stuurt en een seconde later een $0$:
+Op de \textit{Pi} draaien we de volgende code, die eerst het character '$1$' stuurt en een seconde later het character '$0$':
 \inputpython{code/chapter08/arduino_serial_write.py}
-An sich is deze code redelijk recht-toe-recht-aan. Maar een belangrijk detail moet je zeker niet over het hoofd zien, op regel $7$ en $13$ sturen we de $1$ en $0$. Maar dit is geen standaard \pyth{str}, maar een \pyth{bytearray}. Intern werkt \textit{PySerial} enkel met \pyth{bytearray}. Dus je strings moet je even omzetten voor je ze verstuurd of ontvangt. Dit kan door er een \pyth{b} voor te zetten, of door de functie \pyth{encode()} aan te roepen op je string.\newline
-De ontvangen data moet je dus ook even opmaken (omzetten van \pyth{bytearray} naar \pyth{str} via \pyth{decode()} en newline verwijderen met \pyth{strip()}). Dit kan direct bij het lezen (regel $14$), maar ook gerust bij het printen (regel $8$). Van de \textit{Arduino} krijgen we de volgende info terug:
+An sich is deze code redelijk recht-toe-recht-aan. Maar een belangrijk detail moet je zeker niet over het hoofd zien, op regel $7$ en $13$ sturen we de $1$ en $0$. Maar dit is geen standaard \pyth{str}, maar \pyth{bytes}. Intern werkt \textit{PySerial} enkel met \pyth{bytes}. Dus je strings moet je even omzetten voor je ze verstuurd of ontvangt. Dit kan door er een \pyth{b} voor te zetten, of door de functie \pyth{encode()} aan te roepen op je string.\newline
+De ontvangen data moet je dus ook even opmaken (omzetten van \pyth{bytes} naar \pyth{str} via \pyth{decode()} en newline verwijderen met \pyth{strip()}). Dit kan direct bij het lezen (regel $14$), maar ook gerust bij het printen (regel $8$). Van de \textit{Arduino} krijgen we de volgende info terug:
 \begin{python}
 Ontvangen: Led on!
 Ontvangen: Led off!
@@ -278,24 +278,113 @@ Ontvangen: Led off!
 \newpage
 
 \subsubsection{OOP variant}
-Wat nu als we onze eerder opgedane kennis van OOP toe gaan passen op onze \textit{Arduino} communicatie. Dan moeten we eerst weer de standaardvragen stellen. Welke eigenschappen/variabelen heeft onze \textit{Arduino}? En welke functionaliteit moet hij bezitten. \newline
-De arduino moet kunnen communiceren met een seriële poort, dus daar is hij een \pyth{Serial}-object voor nodig. 
+Wat nu als we onze eerder opgedane kennis van OOP toe gaan passen op onze \textit{Arduino} communicatie. Dan moeten we eerst weer de standaardvragen stellen. Welke eigenschappen/variabelen heeft onze \textit{Arduino}? En welke functionaliteit moet hij bezitten? \newline
+De arduino moet kunnen communiceren met een seriële poort, dus daar is hij een \pyth{Serial}-object voor nodig (die weer een poortnaam, baudrate en een timeout moet weten en waar we dan weer de functies \pyth{write()}, \pyth{readline()} en \pyth{close()} van gebruiken). En de \textit{Arduino} heeft op dit moment enkel een functie nodig die data kan zenden en dan direct een antwoord afvangt en teruggeeft. Dat kan in 1 functie.
+\begin{figure}[h!]
+\centering\includegraphics[scale=0.7]{Pictures/chapter08/arduino_oop.png}
+\label{fig:arduino_oop} % Unique label used for referencing the figure in-text
+%\addcontentsline{toc}{figure}{Figure \ref{fig:webserver}} % Uncomment to add the figure to the table of contents
+\end{figure}
 
+Als we dit in code uitwerken krijgen we de volgende klasse-definitie:
 \inputpython{code/chapter08/arduino_serial_oop.py}
+
+In de constructor (\pyth{__init__()}) van onze Arduino wordt de seriële poort (\pyth{serial}) geopend. Voor de poortname, snelheid (baudrate) en timeout, worden de waardes gebruikt die meegegeven worden in de constructor. Daarna wordt er $2$ gewacht, zodat de daadwerkelijke \textit{Arduino} even opnieuw kan opstarten. \newline
+
+Op regel $12$ is de enige echte functie van onze Arduino klasse: \pyth{send_and_read_data()}, deze ontvangt een \pyth{str}, zet deze om naar \pyth{bytes} en verstuurd 'm over de seriële poort. Daarna wacht hij tot er data binnengekomen is met \pyth{readline()}, en deze data wordt weer opgemaakt (omgezet van \pyth{bytes} naar \pyth{str} en gestript) en teruggegeven. \newline
+
+op regel $18$ is weer een nieuw iets te zien, een destructor (\pyth{__del__()}). Dit is de tegenhanger van de constructor. Waar de constructor wordt aangeroepen door \textit{Python} als je een nieuw object aanmaakt (\pyth{mijn_object =  Object(..)}), wordt de destructor aangeroepen als het object niet meer nodig is (bijv. als je programma klaar is, of wellicht heb je het object in een functie of if-statement aangemaakt en is die functie/statement afgerond). Dankzij deze destructor wordt de seriële poort altijd netjes afgesloten.
+\begin{remark}
+Je hoeft constructors en destructors dus alleen aan te maken. Deze worden intern en automatisch aangeroepen door \textit{Python}. 
+\end{remark}
+
+We hebben bovenstaande code opgeslagen in een bestand genaamt \pyth{arduino.py}. In een nieuw programma kunnen we deze dus weer importeren en gebruiken:
 \begin{python}
+from arduino import Arduino
+
+# Maak nieuw object Arduino aan:
 my_arduino = Arduino('/dev/ACM0', 9600)
+
+# Stuur '1' en print ontvangen data:
 data = my_arduino.send_and_read_data('1')
 print(f'Ontvangen: {data}')
 
 sleep(1)  # Even wachten
 
+# Stuur '1' en print ontvangen data:
 data = my_arduino.send_and_read_data('0')
 print(f'Ontvangen: {data}')
+# Hier wordt dus de Arduino-destructor aangeroepen.
 \end{python}
+
+Dit laat ook weer mooi een ander voordeel van OOP zien: abstractie. Alle technische details zitten verwerkt in onze \pyth{Arduino}-klasse, waardoor ons bovenstaande hoofdprogramma daardoor heel recht-toe-recht-aan blijft. 
+
+\begin{exercise}
+$\\$ Voeg aan de arduino-klasse $2$ functies toe: \pyth{on()} en \pyth{off()}, die lamp aan en uit laten gaan. \newline \newline
+\textbf{TIP:} i.p.v. stukjes code kopiëren kun je ook \pyth{self.send_and_read_data()} gebruiken ;)
+\end{exercise}
 
 \newpage
 
 \subsection{Ethernet}\index{Ethernet}
+Naast een USB poort voor seriële communicatie hebben de \textit{Raspberry Pi} en de \textit{Arduino} een ethernetpoort (De \textit{Arduino} is hier uiteraard wel een schild voor nodig). 
+
+\begin{figure}[h!]
+\centering\includegraphics[scale=0.5]{Pictures/chapter08/ethernet.png}
+\caption{\small De \textit{Raspberry Pi} gekoppeld aan de \textit{Arduino}+shield met een Ethernet kabel.}
+\label{fig:ethernet} % Unique label used for referencing the figure in-text
+%\addcontentsline{toc}{figure}{Figure \ref{fig:webserver}} % Uncomment to add the figure to the table of contents
+\end{figure}
+
+\begin{exercise}
+Sluit de \textit{Arduino} met een Ethernetkabel aan op de \textit{Raspberry Pi}.
+\end{exercise}
+
+We gaan eerst even bekijken hoe je vanuit \textit{Python} via ethernet data kan versturen. Hiervoor zijn we uiteraard een stukje \textit{Arduino}-code voor nodig die die data kan ontvangen en bijv. naar de zijn seriële poort kan schrijven.
+
+\lstinputlisting[language=Arduino]{code/chapter08/ethernetRec.ino}
+
+\begin{exercise}
+Laad het bovenstaande programma op je \textit{Arduino}. 
+\end{exercise}
+
+Voor het \textit{Python} programma maken we gebruik van de \pyth{socket} package, deze zit standaard in \textit{Python} (net als bijv. \pyth{math} en \pyth{time}) en kun/hoef je dus niet los installeren. Het jammere daaraan is dat het daarom geen kek logo heeft waarmee ik dit document kan opfleuren ;) \newline
+
+Onderstaande programma gebruikt de \pyth{socket} package om een bericht te sturen:
+\inputpython{code/chapter08/socket_send.py}
+
+Het is inderdaad maar een kort programma. Maak een \pyth{socket}-object aan (regel $6$), zet de connectie op (regel $7$) op basis van het gegeven IP addres en poort en verstuur het bericht daarnaar toe. Omdat we weer een \pyth{with}-constructie gebruiken, hoeven we wederom niet de connectie zelf af te sluiten (\pyth{s.close()}), maar wordt dit dankzij \pyth{with} automatisch afgehandeld. \newline \newline
+
+Nu dit werkt, rest natuurlijk de vraag hoe het de andere kant om werkt. In het geval dat de \textit{Arduino} iets stuurt en de \textit{Raspberry Pi} dit moet ontvangen. Ook hiervoor zijn we weer een simpel programmaatje nodig die zodra iemand connectie heeft gemaakt met de \textit{Arduino} begint met het sturen van data. In dit geval doet het programma dat eindeloos door, totdat de andere kant de connectie verbreekt. Als het goed is moet ook dit programma bekend voorkomen, gezien het een hele uitgeklede versie van de \textit{WebserverIO.ino} uit Hoofdstuk $1$.
+\lstinputlisting[language=Arduino]{code/chapter08/ethernetSend.ino}
+
+\newpage 
+
+De bijbehorende code aan de \textit{Python} kant is iets minder triviaal als bij het ontvangen. 
+\inputpython{code/chapter08/socket_recv.py}
+We beginnen op dezelfde manier: we maken een \pyth{socket}-object aan (regel $6$), zet de connectie op (regel $8$) op basis van het gegeven IP addres en poort. We kunnen pas iets ontvangen nadat we als 'client' (de \textit{Arduino} is in dit geval de server), iets verstuurd hebben. Dus dat doen we op regel $11$, het maakt verder niet uit wat dit is. \newline
+
+Daarna wordt er een beetje een truc toegepast. Normaal zou via dit soort verbindingen enkel een stroom aan data krijgen, en moet je van te voren aangeven hoeveel bytes je precies wil lezen. Maar in dit geval (op regel $14$) zeggen we dat we de binnengekomen data willen lezen alsof het een bestand is (\pyth{f}). Het voordeel daarvan is dat we die wel regel voor regel kunnen lezen. 
+En dat is wat er daarna gebeurt, we lezen $10$ keer een regel uit ons (virtuele) bestand \pyth{f} en schrijven die naar het scherm. Waar we de vriendelijke begroeting van onze \textit{Arduino} zullen zien. 
+
+\subsubsection{OOP variant}
+
+\inputpython{code/chapter08/arduino_socket.py}
+
+\begin{python}
+from arduno_socket import ArduinoSocket
+
+mijn_arduino = ArduinoSocket('192.168.1.3', 23)
+
+for i in range(10):
+    data = mijn_arduino.receive()
+    print(f'{i}: {data}')
+
+mijn_arduino.send('bla bla bla')
+
+mijn_arduino.close()
+\end{python}
+
 % \subsection{MQTT?}\index{MQTT?}
 
 % \begin{figure}[h!]

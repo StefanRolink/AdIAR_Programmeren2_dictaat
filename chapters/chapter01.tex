@@ -13,7 +13,7 @@ Als onderdeel van de Arduino software worden diverse software-componenten meegel
 
 Daarna kun je alle handige functies die in de library zitten gebruiken in je eigen code. Op de volgende manier kun je bijv. voor de ethernet-shield een webserver worden geconfigureerd, door gebruik te maken van de $Ethernet$-library: \newline
 
-\lstinputlisting[language=Arduino, basicstyle=\ttfamily\footnotesize]{code/chapter01/webserver.ino}
+\lstinputlisting[language=Arduino]{code/chapter01/webserver.ino}
 
 Om daadwerkelijk met de ethernet-shield een connectie te krijgen, is de library wat informatie van je nodig. Op regel $6$, wordt een $EthernetServer$ 'object' aangemaakt met de naam $server$ en deze krijgt ook het getal $80$ mee. Dit is het poort-nummer waarmee je gaat werken, gezien dat we iets met $http$ ('het internet') gaan doen, is dit $80$ (deze poort is daarvoor gereserveerd). Voor meer informatie over dit $http$ protocol\: \url{http://betterexplained.com/articles/a-simple-introduction-to-computer-networking/}. \newline
 

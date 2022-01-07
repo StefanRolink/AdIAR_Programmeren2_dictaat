@@ -8,7 +8,7 @@ sleep(2)                   # Wacht tot Arduino opnieuw is opgestart
 
 for i in range(10):
     data = ser.readline()  # Lees tot aan een nieuwe regel ('\n')
-    data = data.decode()   # Zet bytearray om naar een string
+    data = data.decode()   # Zet bytes om naar een string
     data = data.strip()    # Verwijder nieuw regel ('\n')
     print(f'{i}: {data}')  # Schrijf string naar scherm
 
