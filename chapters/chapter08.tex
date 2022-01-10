@@ -340,13 +340,19 @@ Naast een USB poort voor seriële communicatie hebben de \textit{Raspberry Pi} e
 Sluit de \textit{Arduino} met een Ethernetkabel aan op de \textit{Raspberry Pi}.
 \end{exercise}
 
-We gaan eerst even bekijken hoe je vanuit \textit{Python} via ethernet data kan versturen. Hiervoor zijn we uiteraard een stukje \textit{Arduino}-code voor nodig die die data kan ontvangen en bijv. naar de zijn seriële poort kan schrijven.
+\begin{remark}
+  We gaan er in dit hoofdstuk vanuit dat je Raspberry Pi inmiddels een statisch IP adres heeft en dat deze in de 'range' van de Arduino zit (in het geval van alle voorbeeld gaan we uit dat de \textit{Pi} in $192.168.1.xxx$ zit). Is dit nog niet het geval, regel dit dan eerst voordat je verder gaat!
+\end{remark}
 
-\lstinputlisting[language=Arduino]{code/chapter08/ethernetRec.ino}
+We beginnen met hoe je vanuit \textit{Python} via ethernet data kan versturen. Hiervoor zijn we uiteraard een stukje \textit{Arduino}-code voor nodig die die data kan ontvangen en bijv. naar de zijn seriële poort kan schrijven.
 
 \begin{exercise}
-Laad het bovenstaande programma op je \textit{Arduino}. 
+Laad het onderstaande programma op je \textit{Arduino}. 
 \end{exercise}
+
+\newpage
+
+\lstinputlisting[language=Arduino]{code/chapter08/ethernetRec.ino}
 
 Voor het \textit{Python} programma maken we gebruik van de \pyth{socket} package, deze zit standaard in \textit{Python} (net als bijv. \pyth{math} en \pyth{time}) en kun/hoef je dus niet los installeren. Het jammere daaraan is dat het daarom geen kek logo heeft waarmee ik dit document kan opfleuren ;) \newline
 
@@ -355,16 +361,17 @@ Onderstaande programma gebruikt de \pyth{socket} package om een bericht te sture
 
 Het is inderdaad maar een kort programma. Maak een \pyth{socket}-object aan (regel $6$), zet de connectie op (regel $7$) op basis van het gegeven IP addres en poort en verstuur het bericht daarnaar toe. Omdat we weer een \pyth{with}-constructie gebruiken, hoeven we wederom niet de connectie zelf af te sluiten (\pyth{s.close()}), maar wordt dit dankzij \pyth{with} automatisch afgehandeld. \newline \newline
 
+\newpage 
+
 Nu dit werkt, rest natuurlijk de vraag hoe het de andere kant om werkt. In het geval dat de \textit{Arduino} iets stuurt en de \textit{Raspberry Pi} dit moet ontvangen. Ook hiervoor zijn we weer een simpel programmaatje nodig die zodra iemand connectie heeft gemaakt met de \textit{Arduino} begint met het sturen van data. In dit geval doet het programma dat eindeloos door, totdat de andere kant de connectie verbreekt. Als het goed is moet ook dit programma bekend voorkomen, gezien het een hele uitgeklede versie van de \textit{WebserverIO.ino} uit Hoofdstuk $1$.
 \lstinputlisting[language=Arduino]{code/chapter08/ethernetSend.ino}
 
-\newpage 
 
 De bijbehorende code aan de \textit{Python} kant is iets minder triviaal als bij het ontvangen. 
 \inputpython{code/chapter08/socket_recv.py}
-We beginnen op dezelfde manier: we maken een \pyth{socket}-object aan (regel $6$), zet de connectie op (regel $8$) op basis van het gegeven IP addres en poort. We kunnen pas iets ontvangen nadat we als 'client' (de \textit{Arduino} is in dit geval de server), iets verstuurd hebben. Dus dat doen we op regel $11$, het maakt verder niet uit wat dit is. \newline
+We beginnen op dezelfde manier: we maken een \pyth{socket}-object aan (regel $6$), zetten de connectie op (regel $8$) op basis van het gegeven IP addres en poort. We kunnen pas iets ontvangen nadat we als 'client' (de \textit{Arduino} is in dit geval de server), iets verstuurd hebben. Dus dat doen we op regel $11$, het maakt verder niet uit wat dit is. \newline
 
-Daarna wordt er een beetje een truc toegepast. Normaal zou via dit soort verbindingen enkel een stroom aan data krijgen, en moet je van te voren aangeven hoeveel bytes je precies wil lezen. Maar in dit geval (op regel $14$) zeggen we dat we de binnengekomen data willen lezen alsof het een bestand is (\pyth{f}). Het voordeel daarvan is dat we die wel regel voor regel kunnen lezen. 
+Daarna wordt er een beetje een truc toegepast. Normaal zou via dit soort verbindingen enkel een zogeheten 'stroom' (\textit{stream}) aan data krijgen, en moet je van te voren aangeven hoeveel bytes je precies wil lezen. Maar in dit geval (op regel $14$) zeggen we dat we de binnengekomen data willen lezen alsof het een bestand is (\pyth{f}). Het voordeel daarvan is dat we die wel regel voor regel kunnen lezen. 
 En dat is wat er daarna gebeurt, we lezen $10$ keer een regel uit ons (virtuele) bestand \pyth{f} en schrijven die naar het scherm. Waar we de vriendelijke begroeting van onze \textit{Arduino} zullen zien. 
 
 \subsubsection{OOP variant}
@@ -375,8 +382,6 @@ Ook de communicatie die verloopt met de \textit{Arduino} via het Ethernet kunnen
 \label{fig:socket_oop} % Unique label used for referencing the figure in-text
 %\addcontentsline{toc}{figure}{Figure \ref{fig:webserver}} % Uncomment to add the figure to the table of contents
 \end{figure}
-
-\newpage
 
 Als we dit weer uitwerken in een klasse-definitie krijgen we het volgende:
 \inputpython{code/chapter08/arduino_socket.py}
@@ -416,34 +421,43 @@ En daarmee zijn we aan het eind gekomen van de theorie van dit vak. Hopelijk voe
 \section{Huiswerkopdrachten}\index{Huiswerkopdrachten}
 
 \begin{exercise}
-$\\$
+  Maak een klasse-definitie voor een dier naar keuze. Geef het dier enkele unieke functies. Laat dit dier een subklasse zijn van \pyth{Dier}.
 \end{exercise}
 
 \begin{exercise}
-$\\$
+  Maak een subklasse-definitie van een \pyth{Tijger}, laat deze een subklasse zijn van \pyth{Kat} (dus een subklasse van een subklasse). Een \pyth{Tijger} kan naast net zo spinnen als een \pyth{Kat} ook een giraffe verscheuren met de functie \pyth{verscheur_giraffe()} (dat mag gewoon een simpele \pyth{print()}-statement zijn ;) )
 \end{exercise}
 
 \begin{exercise}
-$\\$
+  \label{exc8:exc3}
+  Maak op de \textit{Arduino} een klein programma die eens per $100ms$ checkt of een knop is ingedrukt, en laat op basis daarvan een bericht sturen naar de \textit{Raspberry Pi} via de seriële poort (bijv. $1$ voor ingedrukt en een $0$ voor niet-ingedrukt). 
 \end{exercise}
 
 \begin{exercise}
-$\\$
+  \label{exc8:exc4}
+  Schrijf een \textit{Python} script dit het bericht van Opdracht \ref{exc8:exc3} leest en op basis van de informatie een Led aan of juist uit zet (dus de knop die op de \textit{Arduino} bestuurd de Led die op de \textit{Raspberry Pi} zit).
 \end{exercise}
 
 \begin{exercise}
-$\\$
+  Bouw beide programma's van Opdracht \ref{exc8:exc3} en \ref{exc8:exc4} om zodat de communicatie via Ethernet verloopt, en de wissel de knop en Led ook om (Dus de knop van de \textit{Raspberry Pi} bestuurd de Led die op de \textit{Arduino} zit).
 \end{exercise}
 
 \begin{exercise}
-$\\$
-\end{exercise}
+  \textbf{Eindopdracht} \newline
+  Laten we zo'n beetje alles wat tot zover geleerd hebben qua programmeren eens verwerken in een grote opdracht. Een data logging systeem bestaande uit een een \textit{Arduino} met een sensor en een \textit{Raspberry Pi}: \newline
 
-\begin{exercise}
-$\\$
-\end{exercise}
+  \begin{itemize}
+    \item[-] Laat de \textit{Arduino} periodiek een sensor uitlezen (kies zelf sensortype en intervaltijd).
+    \item[-] Laat de \textit{Arduino} deze waarde sturen naar de \textit{Raspberry Pi} (mag seriëel of over ethernet).
+    \item[-] Laat de \textit{Raspberry Pi} deze waarde toevoegen aan een spreadsheet.
+    \item[-] Zorg dat het \textit{Python} programma niet crasht als de verbinding onderbroken wordt.
+    \item[-] Maak het mogelijk dat het \textit{Python} programma een nette grafiek kan laten tonen van alle tot dusver ontvangen waarden.
+  \end{itemize}
 
-\begin{exercise}
-$\\$
+  $\\$
+  \textbf{TIP:} Het is een stuk eenvoudiger om integer waardes over te sturen, dan floats (komma-getallen). \newline
+  \textbf{TIP:} De grafiek kan bijv. getoond worden als de gebruiker een speciale knop hiervoor indrukt op de \textit{Pi}.  \newline
+  \textbf{Optionele uitdaging:} Laat de \textit{Python}-code bestaan uit verschillende objecten (bijv. voor de communicatie met de \textit{Arduino}, het wegschrijven naar een spreadsheet en het tonen van een grafiek). \newline
+  \textbf{Optionele uitdaging:} Laat het systeem werken met meer dan $1$ sensor.
 \end{exercise}
 

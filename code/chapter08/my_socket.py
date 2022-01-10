@@ -1,6 +1,6 @@
 import socket
 
-arduino_address = '192.168.1.113'
+arduino_address = '192.168.1.3'
 arduino_port    = 23
 
 s = socket.socket()

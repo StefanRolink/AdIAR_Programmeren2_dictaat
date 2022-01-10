@@ -2,7 +2,7 @@ import serial
 from time import sleep
 
 # Open poort, die daarna te gebruiken is als 'ser':
-ser = serial.Serial('/dev/tty0', 9600, timeout=1)
+ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
 
 sleep(2)                   # Wacht tot Arduino opnieuw is opgestart
 

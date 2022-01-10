@@ -1,7 +1,7 @@
 import serial
 from time import sleep
 
-with serial.Serial('/dev/cu.usbmodem1411401', 9600, timeout=.1) as ser:
+with serial.Serial('/dev/USB0', 9600, timeout=.1) as ser:
     sleep(2)  # Wacht op reset Arduino
 
     ser.write(b'1')                               # Stuur '1': Led aan

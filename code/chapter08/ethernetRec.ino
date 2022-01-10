@@ -1,7 +1,7 @@
 #include <Ethernet.h>
 
 byte mac[] = {0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFF};
-byte ip[] = {192,168,1,3};
+byte ip[] = {192,168,1,3};  // Pas aan naar eigen netwerkconfiguratie
 EthernetServer server = EthernetServer(23);  // Gebruik poort 23 (telnet)
 
 void setup() 
