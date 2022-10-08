@@ -78,6 +78,9 @@ Deze code runt doorgaans prima:
 Geef een cijfer: 12
 Een hoger: 13
 \end{python}
+
+\newpage 
+
 Maar wat nu als de gebruiker iets verkeerds intypt? Bijv. een letter:
 \begin{python}
 Geef een cijfer: q
@@ -110,7 +113,7 @@ except ValueError:
     print('Dat was geen getal, probeer het nog eens')
 \end{python}
 
-Hier 'proberen' we de \pyth{str} te interpreteren als een \pyth{int}. Gaat dat goed, dan wordt er netjes de rest van de code uitgevoerd. Krijg je een error, dan wordt het stuk code na de \pyth{except} uitgevoerd, en wordt de gebruiker vriendelijk verzocht 'even normaal te doen' en het nog eens te proberen. \newline
+Hier 'proberen' we de \pyth{str} te interpreteren als een \pyth{int}. Gaat dat goed, dan wordt er netjes de rest van de code uitgevoerd. Krijg je een error, dan wordt het stuk code na de \pyth{except} uitgevoerd, en wordt de gebruiker vriendelijk verzocht 'even normaal te doen' en het nog eens te proberen. 
 
 Elke error die je tegenkomt kun je op deze manier afvangen. Let daar wel bij op, dat niet elke error afgevangen hoeft te worden. Fouten die je zelf als programmeur maakt horen daar vaak niet bij, het gaat meer om fouten van 'buitenaf'. Bijv. je probeert connectie te maken met een server, maar die is op het moment uit de lucht. Dan zul je wellicht iets in de trant van een \pyth{ConnectionError} of een \pyth{TimeOutError} krijgen, die zijn handig om af te vangen. Je wilt niet dat door iets van buitenaf je programma crasht. Voor de liefhebber: hier is een lijstje te zien van de errors die standaard te vinden zijn in \textit{Python}: \url{https://docs.python.org/3/library/exceptions.html}.
 
@@ -137,9 +140,9 @@ Hallo vanuit een functie!
 \end{python}
 
 Je ziet in het programma op de eerste $2$ regels de gemaakte functie, na het woordje \pyth{def}. De naam van de functie is \textit{my\_function}, alle regels die daarna volgen en ingesprongen zijn (tab), horen bij deze functie. 
-In dit geval is dit maar $1$ regel, namelijk een \pyth{print()}. \newline
+In dit geval is dit maar $1$ regel, namelijk een \pyth{print()}. 
 
-Daarna wordt deze functie 'aangeroepen', dat gebeurt voor het eerst op regel $4$. Dat doe je dus door de naam van de functie te typen, gevolgd door $2$ haakjes $( )$. Even later op regel $6$ gebeurt hetzelfde nog eens. \newline
+Daarna wordt deze functie 'aangeroepen', dat gebeurt voor het eerst op regel $4$. Dat doe je dus door de naam van de functie te typen, gevolgd door $2$ haakjes $( )$. Even later op regel $6$ gebeurt hetzelfde nog eens. 
 
 Dit was een voorbeeld van een functie zonder argumenten. Vaak zul je ook functies zien en maken die dat juist wel hebben. Een argument is iets wat je meegeeft met de functie. Dat kunnen er zoveel zijn als je wilt, en ook van elk datatype. Hieronder een voorbeeld met $2$ argumenten, van het type \pyth{str}:
 
@@ -159,7 +162,8 @@ Hallo Piet! Waddup?
 Valt je op je dat nog steeds nergens het datatype hoeft aan te geven? \textit{Python} snapt dat het om \pyth{str} gaat, omdat je ze als zodanig meegeeft op regel $4$ en $5$. 
 
 \begin{remark}
-De functie zal het ook prima doen als je 'm aanroept met bijv. getallen: \newline 
+De functie zal het ook prima doen als je 'm aanroept met bijv. getallen: 
+
 \pyth{my_fucntion(1, 2)}
 \begin{python}
 Hallo 1! 2?
@@ -169,7 +173,7 @@ Hallo 1! 2?
 
 \newpage
 
-Dan rest ons nog een ding om in te duiken, functies die iets teruggeven. Het kan zijn dat een functie een bepaalde operatie uitvoerd, en dat je het resultaat daarvan graag wil gebruiken verderop in je programma. Dat kan, net als in \textit{C} met \pyth{return}. Zie ook het volgende voorbeeld:
+Dan rest ons nog een ding om in te duiken, functies die iets teruggeven. Het kan zijn dat een functie een bepaalde operatie uitvoert, en dat je het resultaat daarvan graag wil gebruiken verderop in je programma. Dat kan, net als in \textit{C} met \pyth{return}. Zie ook het volgende voorbeeld:
 
 \begin{python}
 import math 
@@ -191,18 +195,17 @@ o20 = oppervlakte(20)
 print(f'Oppervlakte cirkel, bij straal=20: {o20:.2f}')
 \end{python}
 
-In tegenstelling tot \textit{C} hoef je ook hier geen datatype op te geven, dat wordt voor je geregeld. Enkel de functie afsluiten met een \pyth{return}-statement is voldoende om de functie een waarde terug te laten geven. \newline
-
+In tegenstelling tot \textit{C} hoef je ook hier geen datatype op te geven, dat wordt voor je geregeld. Enkel de functie afsluiten met een \pyth{return}-statement is voldoende om de functie een waarde terug te laten geven. 
 
 De functie \pyth{oppervlakte()} berekend de oppervlakte van een cirkel a.h.v. de meegegeven straal \pyth{r}. En hij wordt op vier verschillende manieren aangeroepen:
 \begin{enumerate}
-	\item[-] Allereerst op regel $8$ met een straal van $r=5$, hier wordt ook de naam van het argument ($r$) meegegeven, dat leest makkelijker, maar is niet nodig. Het antwoord van de functie wordt opgeslagen in variabele $o5$ en naar het scherm gescreven. \newline
+	\item[-] Allereerst op regel $8$ met een straal van $r=5$, hier wordt ook de naam van het argument ($r$) meegegeven, dat leest makkelijker, maar is niet nodig. Het antwoord van de functie wordt opgeslagen in variabele $o5$ en naar het scherm geschreven. 
 
-	\item[-] Daarna wordt de functie aangeroepen met een straal van $r=10$, het antwoord hiervan wordt daarna opgeslagen in de variabele $o10$, die dan geprint wordt op het scherm. \newline
+	\item[-] Daarna wordt de functie aangeroepen met een straal van $r=10$, het antwoord hiervan wordt daarna opgeslagen in de variabele $o10$, die dan geprint wordt op het scherm. 
 
-	\item[-] Daarna op regel $14$, wordt het aanroepen van de functie (met $r=15$) en het printen van de teruggegeven waarde gecombineerd tot een regel code. \newline
+	\item[-] Daarna op regel $14$, wordt het aanroepen van de functie (met $r=15$) en het printen van de teruggegeven waarde gecombineerd tot een regel code. 
 
-	\item[-] En tenslotte wordt de functie nog een keer aangeroepen voor $r=20$ op regel $16$. Bij het printen (regel $17$) gebeurt iets bijzonders, daar wordt namelijk aangegeven dat de uitvoer maar $2$ kommagetallen moet laten zien (dit komt door de \pyth{:.2f} in \pyth{print}). 
+	\item[-] En tenslotte wordt de functie nog een keer aangeroepen voor $r=20$ op regel $16$. Bij het printen (regel $17$) gebeurt iets bijzonders, daar wordt namelijk aangegeven dat de uitvoer maar $2$ komma-getallen moet laten zien (dit komt door de \pyth{:.2f} in \pyth{print}). 
 \end{enumerate}
 
 De uitvoer van het programma is dan ook:
@@ -289,17 +292,19 @@ for t in gefilterde_temp:
     print(t)                    
 \end{python}
 
-In het bovenstaande voorbeeld, wordt een filter-functie aangemaakt \pyth{temp_filter(temp)}. Die een \pyth{False} teruggeeft als de meegegeven temperatuur \pyth{temp} groter is dan $90$, en anders \pyth{True}. \newline
+In het bovenstaande voorbeeld, wordt een filter-functie aangemaakt \pyth{temp_filter(temp)}. Die een \pyth{False} teruggeeft als de meegegeven temperatuur \pyth{temp} groter is dan $90$, en anders \pyth{True}. 
 
 Op regel $12$ wordt die filterfunctie daadwerkelijk toegepast op de lijst \pyth{gemeten_temp} en de nieuwe lijst die dat opleverd wordt opgelsagen in \pyth{gefilterde_temp}
 
 \newpage
 
 \section{Huiswerkopdrachten}\index{Huiswerkopdrachten}
+\vspace{5mm} 
 
 \begin{exercise}\label{exc6:exc1}
 Maak een lege lijst aan, en vul deze daarna met de getallen $1$ t/m $100$.
-Gebruik hiervoor een loop en de \pyth{append()} functie. \newline
+Gebruik hiervoor een loop en de \pyth{append()} functie. 
+
 \textbf{Tip:} Een lege lijst maak je als volgt aan: \pyth{lijst = []}
 \end{exercise}
 
@@ -313,11 +318,12 @@ Maak een filter-functie waarmee je oneven getallen uit een lijst kunt filteren. 
 
 \begin{exercise}
 \label{exc6:exc4}
-Maak een functie \pyth{schreeuw} die een meegegeven str omzet naar hoofdletters, en deze daarna weer terug geeft met \pyth{return}. 
+Maak een functie \pyth{schreeuw} die een meegegeven \pyth{str} omzet naar hoofdletters, en deze daarna weer terug geeft met \pyth{return}. 
 \end{exercise}
 
 \begin{exercise}
-Wat als je nu de functie die net gemaakt hebt bij \ref{exc6:exc4}, aanroept met een getal (bijv. \pyth{schreeuw(5)})? \newline
+Wat als je nu de functie die net gemaakt hebt bij \ref{exc6:exc4}, aanroept met een getal (bijv. \pyth{schreeuw(5)})? 
+
 Breidt de functie uit met een \pyth{try} / \pyth{except}, zodat deze niet langer crasht. 
 \end{exercise}
 
@@ -326,6 +332,7 @@ Sluit $4$ LEDs aan op de \textit{GPIO17}, \textit{GPIO18}, \textit{GPIO3} en \te
 \end{exercise}
 
 \begin{exercise}
-Maak een programma dat $10$ keer aan de gebruiker vraagt om een dier in te voeren. Voeg elk van deze dieren toe aan een lijst. Filter alle diernamen die minder dan $3$ letters hebben en print daarna de lijst in alfabetische volgorde op het scherm. \newline
+Maak een programma dat $10$ keer aan de gebruiker vraagt om een dier in te voeren. Voeg elk van deze dieren toe aan een lijst. Filter alle diernamen die minder dan $3$ letters hebben en print daarna de lijst in alfabetische volgorde op het scherm. 
+
 \textbf{Tip:} Je bepaalt de lengte van een string (of lijst) met de functie: \pyth{len(mijn_string)}.
 \end{exercise}

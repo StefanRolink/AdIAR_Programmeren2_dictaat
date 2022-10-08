@@ -23,7 +23,7 @@ myClient.println("GET /search?q=arduino HTTP/1.1");
 \end{lstlisting}
 
 De $.$ (punt) verbindt de methode met het object waar deze bij hoort. Aan methodes kun je, net als bij functies, parameters meegeven, die het gedrag van de methode mede bepalen. Over hoeveel en welke methodes een object beschikt kun je aan de “buitenkant” niet zondermeer zien. Sommige moderne ontwikkelomgevingen, zoals Visual Studio Code en ook de nieuwe Arduino (Pro) 2.0 IDE, beschikken over allerlei ondersteunende functies om daar inzage in te krijgen.\newline 
-Bij gebruik van de klassieke Arduino IDE (die bij de lectures van Programmeren 1 aan bod kwam) ben je aangewezen op de (online) documentatie. Niet alle methodes van een object hoeven beschikbaar te zijn voor de programmeur. Dat zijn alleen de publieke ($public$) methodes. De afgeschermde methodes ($private$) zijn voor intern gebruik. Dat geldt ook voor de varibelen die het object gebruikt. Het is een OO-uitgangspunt die variabelen zoveel mogelijk af te schermen (information hiding) voor de gebruiker van het object. Dat voorkomt namelijk veel ellende. Natuurlijk kun je object-variabelen aanpassen en daarmee ook de status van het object, maar het is gebruikelijk dat te doen met een aantal speciaal daarvoor ontworpen of gegenereerde methodes, de zogenaamde $getters$ en $setters$. Met onderstaande code kan een de status van een ($private$) objectvariabele worden opgevraagd of gewijzigd:
+Bij gebruik van de klassieke Arduino IDE (die bij de lectures van Programmeren 1 aan bod kwam) ben je aangewezen op de (online) documentatie. Niet alle methodes van een object hoeven beschikbaar te zijn voor de programmeur. Dat zijn alleen de publieke ($public$) methodes. De afgeschermde methodes ($private$) zijn voor intern gebruik. Dat geldt ook voor de variabelen die het object gebruikt. Het is een OO-uitgangspunt die variabelen zoveel mogelijk af te schermen (information hiding) voor de gebruiker van het object. Dat voorkomt namelijk veel ellende. Natuurlijk kun je object-variabelen aanpassen en daarmee ook de status van het object, maar het is gebruikelijk dat te doen met een aantal speciaal daarvoor ontworpen of gegenereerde methodes, de zogenaamde $getters$ en $setters$. Met onderstaande code kan een de status van een ($private$) objectvariabele worden opgevraagd of gewijzigd:
 
 \begin{lstlisting}[language=Arduino]
 float temp = myObject.getTemp();
@@ -99,7 +99,7 @@ Opnieuw enige conventies:\newline
 
 Uitleg van de code:\newline
 De klasse bevat de prototypes van 3 methodes: de constructor, een get-methode en een set- methode. Voor de liefhebber: technische gesproken wordt hier het zogenoemde stackbeeld vastgelegd dat de compiler moet opbouwen en wat tijdens runtime gebruikt wordt.
-Een object, dat we straks aanroepen in de .ino-file, wordt gemaakt door de aanroep van de constructor, volgens de beschrijving in de Class defintie. De implementatie daarvan wordt, net als die van $setPos()$ en $getPos()$, beschreven in de bij de .h-file behorende .cpp-file.
+Een object, dat we straks aanroepen in de .ino-file, wordt gemaakt door de aanroep van de constructor, volgens de beschrijving in de Class definitie. De implementatie daarvan wordt, net als die van $setPos()$ en $getPos()$, beschreven in de bij de .h-file behorende .cpp-file.
 De variabele $pos$ is van het type int en private gedeclareerd. Dat laatste betekent dat deze niet bereikbaar is voor de buitenwereld dan alleen via de get- en de set-methode.
 
 \section{Opgaves}\index{Opgaves week 1}

@@ -3,12 +3,12 @@
 Nu we enige basis van \textit{Python} bezitten, en wat ervaring hebben met de taal in combinatie op je laptop/pc, gaan we deze week aan de slag met de \textit{Raspberry Pi}. We gaan er deze week voor zorgen dat je je een beetje wegwijs maakt op dit kleine machientje, en dan gaan we aan de slag met de \textit{GPIO}-poorten van de \textit{Pi} in \textit{Python}. Maar voordat we dat doen, gaan we eerst kijken naar een ander belangrijk concept: \textit{loops}. 
 
 \section{Loops}\index{Loops}
-Als we bepaalde onderdelen van onze code vaker uit willen voeren, kunnen we dat doen aan de hand van \textit{loops}. In \textit{C} hadden we al kennisgemaakt met de \pyth{for}-loop. Deze zit gelukkig ook in \textit{Python}, maar werkt wel een beetje anders. We gebruiken deze vaak in combinatie met de funtie \pyth{range()}:
+Als we bepaalde onderdelen van onze code vaker uit willen voeren, kunnen we dat doen aan de hand van \textit{loops}. In \textit{C} hadden we al kennisgemaakt met de \pyth{for}-loop. Deze zit gelukkig ook in \textit{Python}, maar werkt wel een beetje anders. We gebruiken deze vaak in combinatie met de functie \pyth{range()}:
 \begin{python}
 for x in range(0, 10, 1):
 	print(x)
 \end{python}
-In het bovenstaande voorbeeld roepen we de functie \pyth{range()} aan met 3 argumenten($0$, $10$ en $1$). De eerste geeft het startgetal voor $x$ aan, de tweede bij welke waarde van $x$ de loop moet stoppen, en de derde en laatste met welke hoeveel we $x$ we moeten verhogen bij elke nieuwe iteratie. Dit voorbeeld print dus de getallen $0$ t/m $9$ op het scherm:
+In het bovenstaande voorbeeld roepen we de functie \pyth{range()} aan met 3 argumenten($0$, $10$ en $1$). De eerste geeft het start-getal voor $x$ aan, de tweede bij welke waarde van $x$ de loop moet stoppen, en de derde en laatste met welke hoeveel we $x$ we moeten verhogen bij elke nieuwe iteratie. Dit voorbeeld print dus de getallen $0$ t/m $9$ op het scherm:
 \begin{python}
 0
 1
@@ -37,7 +37,7 @@ Als tweede voorbeeld een loop die van $2$ t/m $25$ loopt, met stapjes van $3$:
 for x in range(2, 25, 3):
 	print(x)
 \end{python}
-Dit print het volgende uit: $2, 5, 8, 11, 14, 17, 20, 23$. De \pyth{for}-loop stopt na $23$, omdat $23+3 = 26$, wat hoger is dan $25$, de stop waarde. \newline
+Dit print het volgende uit: $2, 5, 8, 11, 14, 17, 20, 23$. De \pyth{for}-loop stopt na $23$, omdat $23+3 = 26$, wat hoger is dan $25$, de stop waarde. 
 
 Naast de \pyth{for}-loop, bestaat er ook de \pyth{while}-loop. Deze zit ook in \textit{C}, maar hebben we destijds niet gebruikt. Wellicht is het handig om te weten dat hij bestaat, en te snappen hoe je 'm gebruikt:
 \begin{python}
@@ -46,7 +46,7 @@ while i < 6:
 	print(i)
 	i += 1
 \end{python}
-In het bovenstaand voorbeeld wordt de code in de \pyth{while}-loop uitgevoerd \textit{zolang} de conditie \pyth{i < 6} gelijk is aan \pyth{True}. We beginnen met \pyth{i = 1}, en tellen er elke keer \pyth{1} bij op, waardoor de uitvoer van het programma $1$ t/m $5$ is. \newline
+In het bovenstaand voorbeeld wordt de code in de \pyth{while}-loop uitgevoerd \textit{zolang} de conditie \pyth{i < 6} gelijk is aan \pyth{True}. We beginnen met \pyth{i = 1}, en tellen er elke keer \pyth{1} bij op, waardoor de uitvoer van het programma $1$ t/m $5$ is. 
 
 Met een \pyth{while}-loop is ook vrij makkelijk een oneindige loop te maken, vergelijkbaar met de \textit{loop()}-functie bij de \textit{Arduino}:
 \begin{python}
@@ -61,7 +61,7 @@ Het is bij zo'n loop wel handig om te weten hoe je 'm weer stopt. Want in de mee
 \newpage
 
 \section{Editor}\index{Editor}
-Nu het concept van loops ook bekend is in \textit{Python} gaan we ons richtin op de \textit{Raspberry Pi}. Allereerst, is net als bij je laptop ook op de \textit{Pi} handiger om een \textit{IDE} te gebruiken. Dus daar gaan we eerst voor zorgen. Als het goed is staat \textit{Thonny} standaard geïnstalleerd, maar ook hier mag je alles gebruiken wat je zelf prettig vindt. Tijdens de lessen wordt zoals eerder vermeld met Thonny gewerkt. \newline
+Nu het concept van loops ook bekend is in \textit{Python} gaan we ons richtin op de \textit{Raspberry Pi}. Allereerst, is net als bij je laptop ook op de \textit{Pi} handiger om een \textit{IDE} te gebruiken. Dus daar gaan we eerst voor zorgen. Als het goed is staat \textit{Thonny} standaard geïnstalleerd, maar ook hier mag je alles gebruiken wat je zelf prettig vindt. Tijdens de lessen wordt zoals eerder vermeld met Thonny gewerkt. 
 
 Mocht \textit{Thonny} of je favoriete editor nog niet geïnstalleerd zijn, is dit een mooi moment om te kijken dat eigenlijk gaat onder \textit{Linux}. Je kunt hiervoor de grafische \textit{Add/Remove Software}-tool voor gebruiken:
 \begin{figure}[h!]
@@ -87,10 +87,11 @@ Als dit klaar is, is je vers geïnstalleerde programma te vinden in het \textit{
 \newpage 
 
 \section{Pi header}\index{Pi header}
-Zoals je wellicht al gezien had, heeft de \textit{Pi} een $40$-pins header aan boord, die sinds \textit{Model 2B} altijd hetzelfde is gebleven. Deze header maakt dat de \textit{Pi} niet alleen een 'leuk klein, maar relatief snel computertje' is, maar ook gemakkelijk hardware kan aansturen en sensors kan uitlezen. Een combinatie die het een krachtig data analyse platform maakt. In afbeelding \ref{fig:pi_header}, is te zien wat er allemaal op de header zit: \newline
+Zoals je wellicht al gezien had, heeft de \textit{Pi} een $40$-pins header aan boord, die sinds \textit{Model 2B} altijd hetzelfde is gebleven. Deze header maakt dat de \textit{Pi} niet alleen een 'leuk klein, maar relatief snel computertje' is, maar ook gemakkelijk hardware kan aansturen en sensors kan uitlezen. Een combinatie die het een krachtig data analyse platform maakt. In afbeelding \ref{fig:pi_header}, is te zien wat er allemaal op de header zit: 
+
 \begin{figure}[h!]
-\centering\includegraphics[scale=0.30]{Pictures/chapter05/pi_pinout.png}
-\caption{Pinout van de \textit{Raspberry Pi}, bron: \url{https://www.raspberrypi.org/documentation/usage/gpio/}}
+\centering\includegraphics[scale=0.28]{Pictures/chapter05/pi_pinout.png}
+\caption{Pinout van de \textit{Raspberry Pi}, bron: \href{https://www.raspberrypi.org/documentation/usage/gpio/}{https://www.raspberrypi.org}}
 \label{fig:pi_header} % Unique label used for referencing the figure in-text
 %\addcontentsline{toc}{figure}{Figure \ref{fig:webserver}} % Uncomment to add the figure to the table of contents
 \end{figure}
@@ -111,7 +112,7 @@ Geen zin om de functie van elk pinnetje te onthouden? Open op je \textit{Pi} een
 \newpage
 
 \section{GPIO}\index{GPIO}
-Tijd om de pinnen daadwerkelijk te gaan gebruiken. We beginnen maar eens door de \textit{GPIO}-poorten te gebruiken als output, met het aansturen van een LED.
+Tijd om de pinnen daadwerkelijk te gaan gebruiken. We beginnen maar eens door de \textit{GPIO}\--poorten te gebruiken als output, met het aansturen van een LED.
 \subsection{GPIO: output}\index{GPIO: output}
 Sluit een \textit{LED} en een weerstand (van ongeveer $300 \Omega$) aan op \textit{GPIO17}. Zie ook afbeelding \ref{fig:pi_led}, hieronder:
 \begin{figure}[h!]
@@ -143,7 +144,7 @@ while True:
 Bij het runnen krijg je nu waarschijnlijk een warning. Deze is te onderdrukken door \pyth{RPi.GPIO.setwarnings(False)} toe te voegen voordat de \pyth{setmode()}-functie wordt aangeroepen op regel $6$.
 \end{remark}
 
-Het programma heeft qua opbouw veel weg van wat we gewend waren bij de \textit{Arduino}. Met de eerste twee regels (\pyth{import}) zorgen we dat we gebruik kunnen maken van de functies in de \pyth{RPi.GPIO}- en de \pyth{time}-module. Op regel $6$ en $7$ worden de module en de poort geconfigureert (dit is vergelijkbaar wat er in de \textit{void setup()} had gestaan). Daarna begint een oneindige lus, die het daadwerkelijke lampje laat knipperen (Dit had bij de \textit{Arduino} in de \textit{void loop()} gestaan). \newline
+Het programma heeft qua opbouw veel weg van wat we gewend waren bij de \textit{Arduino}. Met de eerste twee regels (\pyth{import}) zorgen we dat we gebruik kunnen maken van de functies in de \pyth{RPi.GPIO}- en de \pyth{time}-module. Op regel $6$ en $7$ worden de module en de poort geconfigureerd (dit is vergelijkbaar wat er in de \textit{void setup()} had gestaan). Daarna begint een oneindige lus, die het daadwerkelijke lampje laat knipperen (Dit had bij de \textit{Arduino} in de \textit{void loop()} gestaan). 
 
 Tot zover de 'klassieke' manier, tegenwoordig zie je steeds meer dat er gebruikt wordt gemaakt van de \pyth{gpiozero}-module. En dat ziet er dan als volgt uit:
 \begin{python}
@@ -231,6 +232,7 @@ Wederom een stuk compacter en to-the-point. Met deze \pyth{gpiozero}-module zijn
 \newpage
 
 \section{Huiswerkopdrachten}\index{Huiswerkopdrachten}
+\vspace{5mm} 
 \begin{exercise}
 Schrijf een programma waarin je met een \pyth{while}-loop de eerste $10$ getallen van de tafel van $5$ print.
 \end{exercise}
@@ -263,8 +265,9 @@ Breid Vraag \ref{exc4:exc1} uit. Vraag aan de gebruiker nu $2$ getallen: $h$ en 
 \end{exercise}
 
 \begin{exercise}
-Sluit een LED aan op \textit{GPIO17} en een op \textit{GPIO18}. Zorg ervoor dat de ene $1$ keer per seconde knippert en de andere $2$ keer per seconde. \newline
-\textbf{TIP:} De \pyth{sleep()}-functie accepteerd ook argumenten die kleiner zijn dan $1$ (oftewel: \textit{floats}), zodat je deze ook kunt gebruiken voor delays van minder dan 1 seconde.
+Sluit een LED aan op \textit{GPIO17} en een op \textit{GPIO18}. Zorg ervoor dat de ene $1$ keer per seconde knippert en de andere $2$ keer per seconde. 
+
+\textbf{TIP:} De \pyth{sleep()}-functie accepteert ook argumenten die kleiner zijn dan $1$ (oftewel: \textit{floats}), zodat je deze ook kunt gebruiken voor delays van minder dan 1 seconde.
 \end{exercise}
 
 \begin{exercise}
