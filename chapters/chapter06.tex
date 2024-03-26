@@ -1,4 +1,4 @@
-\chapter{Week 4: Diepere duik}
+\chapter{Diepere duik}
 Deze week gaan kijken naar enkele concepten die ons leven als programmeur een stukje makkelijker kunnen gaan maken. We gaan eerst een blik werpen op verzamelingen in de vorm van \textit{lijsten}. Daarna de robuustheid van onze code aanzienlijk verbeteren met \pyth{Try} / \pyth{Except}-blokken en ten slotte meer structuur aanbrengen met de introductie van \textit{functies}. 
 % , \textit{Dictionaries} en \textit{tuples}
 
@@ -66,7 +66,9 @@ Maak zelf een lijst aan. Ga na wat de functies \pyth{count()}, \pyth{pop()} en \
 % \section{Dictionaries}\index{Dictionaries}
 
 \section{Try ... Except}\index{Try ... Except}
-Je bent ze inmiddels ongetwijfeld tijdens het maken van de huiswerkopdrachten (of elders) tegengekomen: \textit{errors}. Bijv. bij het opvragen van gegevens bij de gebruiker, via de \pyth{input()}-functie:
+Je bent ze inmiddels ongetwijfeld tijdens het maken van de huiswerkopdrachten (of elders) tegengekomen: \textit{errors}. 
+
+Bijv. bij het opvragen van gegevens bij de gebruiker, via de \pyth{input()}-functie:
 \begin{python}
 x = input('Geef een cijfer: ')
 x = int(x)  # Zet de input-string om naar een int, en sla dit weer op in 'x'.
@@ -89,7 +91,7 @@ Traceback (most recent call last):
     x = int(x)  # Zet de input-string om naar een int, en sla dit weer op in 'x'.
 ValueError: invalid literal for int() with base 10: 'q'
 \end{python}
-Dan krijg je dus een \textit{error} voor je kiezen, in dit geval een \pyth{ValueError}. Bijkomend nadeel: het programma sluit direct af (crasht). Gelukkig geeft \pyth{Python} bij errors vaak genoeg informatie waarmee je de bug je in je code kunt oplossen. Hierboven kun je lezen dat er iets mis gaat op regel $2$: \pyth{x = int(x)}, op het moment dat we de \pyth{str} $q$ om proberen te zetten naar een \pyth{int}. En dat is best te verklaren natuurlijk, $q$ is domweg geen getal. 
+Dan krijg je dus een \textit{error} voor je kiezen, in dit geval een \pyth{ValueError}. Bijkomend nadeel: het programma sluit direct af (crasht). Gelukkig geeft \pyth{Python} bij errors vaak genoeg informatie waarmee je de bug je in je code kunt oplossen. Hierboven kun je lezen dat er iets mis gaat op regel $2$: \pyth{x = int(x)}, op het moment dat we de \pyth{str} $"q"$ om proberen te zetten naar een \pyth{int}. En dat is best te verklaren natuurlijk, $"q"$ is domweg geen getal. 
 
 \begin{remark}
 \textbf{Tip: } Mocht je nu op zoek zijn naar de \textit{ASCII}-waarde van een karakter, gebruik dan de \pyth{ord()}-functie:

@@ -17,4 +17,4 @@ writer = pd.ExcelWriter('test.xlsx')
 df.to_excel(writer, index=False)
 
 # Sla de excel-structuur op als daadwerklijk excel-bestand:
-writer.save()
+writer.close()

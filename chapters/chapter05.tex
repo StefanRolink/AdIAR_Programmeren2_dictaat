@@ -1,4 +1,4 @@
-\chapter{Week 3: Python op de Pi}
+\chapter{Python op de Pi}
 
 Nu we enige basis van \textit{Python} bezitten, en wat ervaring hebben met de taal in combinatie op je laptop/pc, gaan we deze week aan de slag met de \textit{Raspberry Pi}. We gaan er deze week voor zorgen dat je je een beetje wegwijs maakt op dit kleine machientje, en dan gaan we aan de slag met de \textit{GPIO}-poorten van de \textit{Pi} in \textit{Python}. Maar voordat we dat doen, gaan we eerst kijken naar een ander belangrijk concept: \textit{loops}. 
 
@@ -55,7 +55,7 @@ while True:
 \end{python}
 
 \begin{remark}
-Het is bij zo'n loop wel handig om te weten hoe je 'm weer stopt. Want in de meeste gevallen maak je 'm per ongeluk. Bij een \textit{IDE} heb je naast een run knopt (groen driehoekje), vaak ook een stop knop (rood vierkantje). In de terminal kun je de toetscombinatie \text{Ctrl+C} gebruiken. 
+Het is bij zo'n oneindige loop wel handig om te weten hoe je 'm weer stopt. Want in de meeste gevallen maak je 'm per ongeluk. Bij een \textit{IDE} heb je naast een run knopt (groen driehoekje), vaak ook een stop knop (rood vierkantje). In de terminal kun je de toetscombinatie \text{Ctrl+C} gebruiken. 
 \end{remark}
 
 \newpage
@@ -72,7 +72,7 @@ Mocht \textit{Thonny} of je favoriete editor nog niet geïnstalleerd zijn, is di
 \end{figure}
 
 \begin{remark}
-Een beetje hacker doet dit vaak via de \textit{Terminal}. Ook omdat de \textit{Pi} niet altijd aangesloten is op een scherm, is het ook handig om te weten hoe dit werkt. Allereerst zorg je ervoor dat alle lijsten met software die je kunt installeren up-to-date is:
+Een beetje hacker doet dit vaak via de \textit{Terminal}. Ook omdat de \textit{Pi} niet altijd aangesloten is op een scherm, is het ook handig om te weten hoe dit werkt. Allereerst zorg je ervoor dat alle lijsten met software die je kunt installeren up-to-date zijn:
 \begin{lstlisting}[language=bash]
 sudo apt update
 \end{lstlisting}
@@ -82,6 +82,9 @@ Daarna installeer je het programma in kwestie:
 sudo apt install thonny
 \end{lstlisting}
 Als dit klaar is, is je vers geïnstalleerde programma te vinden in het \textit{Pi-menu} linksboven.
+
+\vspace{5mm}
+\textit{apt} is een handig programmaatje om software mee te installeren, maar het kan veel meer, bijv. ook je systeem up-to-date houden. Als je dat interessant vindt, kijk dan een \href{https://ubuntu.com/server/docs/package-management}{hier} voor meer info. 
 \end{remark}
 
 \newpage 
@@ -104,6 +107,10 @@ Als het goed komen de meeste pin-fucnties bekend voor, want deze zijn vergelijkb
 	\item[-] Een \textit{$I^2C$}-bus (\textit{SDA, SCL}) (ook wel: \textit{TWI}-bus genoemd). 
 	\item[-] Een \textit{UART} (\textit{TXD, RXD}), vergelijkbaar met de \textit{Serial} op de \textit{Arduino}.
 \end{enumerate}
+
+\begin{remark}
+Misschien viel je het al op in het lijstje hierboven, maar in tegenstelling tot de \textit{Arduino} kan de \textit{Pi} dus geen analoge signalen inlezen. Als we dat willen kunnen we bijv. wel een \textit{Arduino} koppelen aan onze \textit{Pi}, en aan deze het analoge werk uit laten besteden. Hierover later meer!    
+\end{remark}
 
 \begin{exercise}
 Geen zin om de functie van elk pinnetje te onthouden? Open op je \textit{Pi} een \textit{Terminal}-venster en typ '\textit{pinout}'.
@@ -144,7 +151,7 @@ while True:
 Bij het runnen krijg je nu waarschijnlijk een warning. Deze is te onderdrukken door \pyth{RPi.GPIO.setwarnings(False)} toe te voegen voordat de \pyth{setmode()}-functie wordt aangeroepen op regel $6$.
 \end{remark}
 
-Het programma heeft qua opbouw veel weg van wat we gewend waren bij de \textit{Arduino}. Met de eerste twee regels (\pyth{import}) zorgen we dat we gebruik kunnen maken van de functies in de \pyth{RPi.GPIO}- en de \pyth{time}-module. Op regel $6$ en $7$ worden de module en de poort geconfigureerd (dit is vergelijkbaar wat er in de \textit{void setup()} had gestaan). Daarna begint een oneindige lus, die het daadwerkelijke lampje laat knipperen (Dit had bij de \textit{Arduino} in de \textit{void loop()} gestaan). 
+Het programma heeft qua opbouw veel weg van wat we gewend waren bij de \textit{Arduino}. Met de eerste twee regels (\pyth{import}) zorgen we dat we gebruik kunnen maken van de functies in de \pyth{RPi.GPIO}- en de \pyth{time}-module, vergelijkbaar met de $\#include$ op de \textit{Arduino}. Op regel $6$ en $7$ worden de module en de poort geconfigureerd (dit is vergelijkbaar wat er in de \textit{void setup()} had gestaan). Daarna begint een oneindige lus, die het daadwerkelijke lampje laat knipperen (Dit had bij de \textit{Arduino} in de \textit{void loop()} gestaan). 
 
 Tot zover de 'klassieke' manier, tegenwoordig zie je steeds meer dat er gebruikt wordt gemaakt van de \pyth{gpiozero}-module. En dat ziet er dan als volgt uit:
 \begin{python}
@@ -227,7 +234,7 @@ while True:
         sleep(0.25)
 \end{python}
 
-Wederom een stuk compacter en to-the-point. Met deze \pyth{gpiozero}-module zijn nog veel meer mooie dingen te doen, we komen er later op terug als we leren hoe functies werken in \textit{Python}. Merk op dat we op dit moment nog steeds alles in een eindeloze \pyth{while}-loop hebben staan, dat betekend dat de \textit{Pi} enorm druk is met het draaien van ons kleine scriptje, dat kan veel efficiënter!
+Wederom een stuk compacter en to-the-point. Met deze \pyth{gpiozero}-module zijn nog veel meer mooie dingen te doen, we komen er later op terug als we leren hoe functies werken in \textit{Python}. Merk op dat we op dit moment nog steeds alles in een eindeloze \pyth{while}-loop hebben staan, dat betekend dat de \textit{Pi} enorm druk is met het draaien van ons kleine scriptje, dat kan veel efficiënter! In het volgende hoofdstuk gaan we leren hoe.
 
 \newpage
 

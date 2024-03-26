@@ -4,6 +4,7 @@
 
 \RequirePackage{listings}
 \RequirePackage{xcolor}
+\usepackage{textcomp} % for correct quotes in code
 
 \renewcommand*{\lstlistlistingname}{Code Listings}
 \renewcommand*{\lstlistingname}{Code Listing}
@@ -46,7 +47,7 @@ emph={[3]object,type,isinstance,copy,deepcopy,zip,enumerate,reversed,list,set,le
 emphstyle=[3]\color{commandcolour},
 emph={Exception,NameError,IndexError,SyntaxError,TypeError,ValueError,OverflowError,ZeroDivisionError},
 emphstyle=\color{exceptioncolour}\bfseries,
-%upquote=true,
+upquote=true,
 morecomment=[s]{"""}{"""},
 morestring=[b]',
 morestring=[b]",

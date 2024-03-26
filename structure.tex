@@ -38,6 +38,7 @@
 \usepackage{parskip}
 
 \renewcommand{\thefootnote}{\fnsymbol{footnote}}
+
 %----------------------------------------------------------------------------------------
 %	MARGINS
 %----------------------------------------------------------------------------------------
@@ -173,7 +174,9 @@
 
 \pagestyle{fancy} % Enable the custom headers and footers
 
-\renewcommand{\chaptermark}[1]{\markboth{\sffamily\normalsize\bfseries\chaptername\ \thechapter.\ #1}{}} % Styling for the current chapter in the header
+\renewcommand{\chaptermark}[1]
+% \renewcommand{\chaptername}{Hoofdstuk}
+{\markboth{\sffamily\normalsize\bfseries Hoofdstuk\ \thechapter:\ #1}{}} % Styling for the current chapter in the header
 \renewcommand{\sectionmark}[1]{\markright{\sffamily\normalsize\thesection\hspace{5pt}#1}{}} % Styling for the current section in the header
 
 \fancyhf{} % Clear default headers and footers
@@ -502,9 +505,10 @@ innerbottommargin=5pt]{cBox}
 %----------------------------------------------------------------------------------------
 %	LINKS
 %----------------------------------------------------------------------------------------
+\definecolor{nhl_blue}{rgb}{0.05,0.41,0.69} 
 \renewcommand\UrlFont{\color{blue}\rmfamily\itshape} 
 \usepackage{hyperref}
-\hypersetup{hidelinks,colorlinks=false,breaklinks=true,urlcolor=blue,bookmarksopen=false}
+\hypersetup{hidelinks,colorlinks=true,breaklinks=true,urlcolor=blue,bookmarksopen=false,linkcolor=nhl_blue,citecolor=blue,anchorcolor=blue}
 
 \usepackage{bookmark}
 \bookmarksetup{
